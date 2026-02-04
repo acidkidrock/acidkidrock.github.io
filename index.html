@@ -116,12 +116,8 @@
     }
 
     @keyframes floatUp {
-      from {
-        transform: translateY(0px);
-      }
-      to {
-        transform: translateY(-120vh);
-      }
+      from { transform: translateY(0px); }
+      to { transform: translateY(-120vh); }
     }
 
     /* ==========================
@@ -555,13 +551,47 @@
     }
 
     .job-meta {
-      color: rgba(230,230,230,0.75);
-      font-size: 0.92rem;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.96rem;
       margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.45;
     }
 
     body.light .job-meta {
-      color: rgba(15, 23, 42, 0.70);
+      color: rgba(15, 23, 42, 0.85);
+    }
+
+    /* PREMIUM BADGES */
+    .job-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 8px;
+      margin-right: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.90);
+      letter-spacing: 0.2px;
+    }
+
+    .job-meta span i {
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    body.light .job-meta span {
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(0,0,0,0.03);
+      color: rgba(15, 23, 42, 0.88);
+    }
+
+    body.light .job-meta span i {
+      color: var(--accent);
     }
 
     .job ul {
@@ -572,35 +602,6 @@
       margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.95rem;
-    }
-
-    /* ==========================
-       SKILLS
-       ========================== */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.86);
-      font-weight: 800;
-    }
-
-    body.light .skill {
-      border: 1px solid rgba(0,0,0,0.10);
-      background: rgba(0,0,0,0.03);
-      color: rgba(15, 23, 42, 0.85);
-    }
-
-    .skill strong {
-      color: var(--accent3);
     }
 
     /* ==========================
@@ -635,6 +636,30 @@
     }
 
     /* ==========================
+       PDF PREVIEW SECTION
+       ========================== */
+    .pdf-preview {
+      width: 100%;
+      height: 650px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    }
+
+    body.light .pdf-preview {
+      background: rgba(0,0,0,0.02);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+
+    .pdf-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ==========================
        CONTACT
        ========================== */
     .contact-box {
@@ -646,6 +671,53 @@
 
     .contact-box a {
       font-weight: 900;
+    }
+
+    /* ==========================
+       BACK TO TOP BUTTON
+       ========================== */
+    #backToTop {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.40);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
+
+    body.light #backToTop {
+      background: rgba(0,0,0,0.04);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      transform: translateY(0px);
+      pointer-events: auto;
+    }
+
+    #backToTop:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,224,255,0.35);
+      background: rgba(0,224,255,0.06);
+    }
+
+    body.light #backToTop:hover {
+      border-color: rgba(0,119,255,0.35);
+      background: rgba(0,119,255,0.07);
     }
 
     /* ==========================
@@ -691,6 +763,9 @@
       .hero h1 {
         font-size: 2.15rem;
       }
+      .pdf-preview {
+        height: 520px;
+      }
     }
   </style>
 </head>
@@ -718,6 +793,7 @@
         <a href="#languages" class="nav-item">Languages</a>
         <a href="#casestudies" class="nav-item">Case Studies</a>
         <a href="#impact" class="nav-item">Impact</a>
+        <a href="#resume" class="nav-item">Resume</a>
         <a href="#contact" class="nav-item">Contact</a>
 
         <!-- THEME TOGGLE -->
@@ -752,11 +828,6 @@
             <div class="chip">Escalation Handling</div>
             <div class="chip">Community Analytics</div>
           </div>
-
-          <!-- DOWNLOAD RESUME BUTTON -->
-          <a class="resume-btn" href="resume.pdf" target="_blank">
-            <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
-          </a>
         </div>
       </div>
 
@@ -766,6 +837,16 @@
           <p>
             I manage Web3 communities like a structured business function focused on engagement,
             support workflows, safety and scalable community operations.
+          </p>
+
+          <p style="margin-top:12px; font-weight:900; color: var(--text);">
+            <i class="fa-solid fa-location-dot" style="color: var(--accent);"></i>
+            Location: India
+          </p>
+
+          <p style="margin-top:6px; font-weight:900; color: var(--text);">
+            <i class="fa-solid fa-globe" style="color: var(--accent2);"></i>
+            Available for Remote Roles
           </p>
         </div>
 
@@ -838,7 +919,11 @@
           <div class="job-content">
             <div class="job-title">Community Manager</div>
             <div class="job-meta">
-              Bitocean Global (OceanEX Exchange) · Freelance • Apr 2023 – Jan 2026 • Cayman Islands · Remote
+              Bitocean Global (OceanEX Exchange) • Apr 2023 – Jan 2026
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Cayman Islands</span>
+              <span><i class="fa-solid fa-globe"></i> Remote</span>
+              <span><i class="fa-solid fa-briefcase"></i> Freelance</span>
             </div>
             <ul>
               <li>Served as the primary community and support interface, managing high-volume user interactions across multiple platforms.</li>
@@ -856,7 +941,11 @@
           <div class="job-content">
             <div class="job-title">Lead Community Manager</div>
             <div class="job-meta">
-              Work X · Freelance • Sep 2023 – Jul 2024 • Zug, Switzerland · Remote
+              Work X • Sep 2023 – Jul 2024
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Zug, Switzerland</span>
+              <span><i class="fa-solid fa-globe"></i> Remote</span>
+              <span><i class="fa-solid fa-briefcase"></i> Freelance</span>
             </div>
             <ul>
               <li>Managed global and regional admins for Telegram (<strong>47,000+</strong>) and Discord (<strong>37,000+</strong>) communities.</li>
@@ -874,7 +963,11 @@
           <div class="job-content">
             <div class="job-title">Community Manager</div>
             <div class="job-meta">
-              Work X · Freelance • Aug 2024 – Feb 2025 • Zug, Switzerland · Remote
+              Work X • Aug 2024 – Feb 2025
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Zug, Switzerland</span>
+              <span><i class="fa-solid fa-globe"></i> Remote</span>
+              <span><i class="fa-solid fa-briefcase"></i> Freelance</span>
             </div>
             <ul>
               <li>Moderated multiple regional chat groups and social channels to boost growth and foster an inclusive community environment.</li>
@@ -890,7 +983,11 @@
           <div class="job-content">
             <div class="job-title">Community Manager</div>
             <div class="job-meta">
-              WhereAt · Freelance • Aug 2022 – Jun 2024 • Dubai, UAE · Remote
+              WhereAt • Aug 2022 – Jun 2024
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+              <span><i class="fa-solid fa-globe"></i> Remote</span>
+              <span><i class="fa-solid fa-briefcase"></i> Freelance</span>
             </div>
             <ul>
               <li>Managed and moderated social media groups to grow the community to <strong>11,000+</strong> members.</li>
@@ -905,7 +1002,11 @@
           <div class="job-content">
             <div class="job-title">Community Manager</div>
             <div class="job-meta">
-              Moonlift Capital · Freelance • Jul 2020 – Feb 2023 • Netherlands · Remote
+              Moonlift Capital • Jul 2020 – Feb 2023
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Netherlands</span>
+              <span><i class="fa-solid fa-globe"></i> Remote</span>
+              <span><i class="fa-solid fa-briefcase"></i> Freelance</span>
             </div>
             <ul>
               <li>Grew a Telegram community from <strong>2,000 to 30,000+</strong> members organically through AMA sessions, giveaways, and engagement strategy.</li>
@@ -921,7 +1022,11 @@
           <div class="job-content">
             <div class="job-title">Technical Support Engineer</div>
             <div class="job-meta">
-              Hewlett Packard Inc. (via Magna Infotech Pvt Ltd) · Full-time • Jul 2016 – Jan 2018 • Bengaluru, India
+              Hewlett Packard Inc. (via Magna Infotech Pvt Ltd) • Jul 2016 – Jan 2018
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Bengaluru, India</span>
+              <span><i class="fa-solid fa-building"></i> On-site</span>
+              <span><i class="fa-solid fa-user-tie"></i> Full-time</span>
             </div>
             <ul>
               <li>Delivered software and firmware support for laptops, desktops, and printers, improving system reliability and customer satisfaction.</li>
@@ -936,7 +1041,11 @@
           <div class="job-content">
             <div class="job-title">Operational Executive</div>
             <div class="job-meta">
-              Aegis · Full-time • Apr 2015 – Feb 2016 • Bengaluru, India
+              Aegis • Apr 2015 – Feb 2016
+              <br>
+              <span><i class="fa-solid fa-location-dot"></i> Bengaluru, India</span>
+              <span><i class="fa-solid fa-building"></i> On-site</span>
+              <span><i class="fa-solid fa-user-tie"></i> Full-time</span>
             </div>
             <ul>
               <li>Delivered Level 1 semi-technical support and handled escalated calls ensuring quick resolution for end-users.</li>
@@ -1098,6 +1207,18 @@
       </div>
     </section>
 
+    <!-- RESUME PREVIEW -->
+    <section id="resume" class="fade-up">
+      <h2 class="section-title">Resume Preview</h2>
+      <p class="section-sub">
+        View my resume directly below, or download it as a PDF from the contact section.
+      </p>
+
+      <div class="pdf-preview">
+        <iframe src="resume.pdf"></iframe>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="fade-up">
       <h2 class="section-title">Contact</h2>
@@ -1112,6 +1233,7 @@
             <div><i class="fa-solid fa-envelope"></i> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></div>
             <div><i class="fa-brands fa-telegram"></i> <a href="https://t.me/SwatWeb3" target="_blank">t.me/SwatWeb3</a></div>
             <div><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a></div>
+
             <div style="margin-top:14px;">
               <a class="resume-btn" href="resume.pdf" target="_blank">
                 <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
@@ -1134,6 +1256,11 @@
       © <span id="year"></span> Swatantra Dwivedi • Community Operations Manager • Built on GitHub Pages
     </footer>
 
+  </div>
+
+  <!-- BACK TO TOP -->
+  <div id="backToTop" title="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
   </div>
 
   <script>
@@ -1208,7 +1335,6 @@
 
     /* ==========================
        PARTICLES GENERATOR
-       Very light performance
        ========================== */
     const particlesContainer = document.getElementById("particles");
     const particleCount = 35;
@@ -1232,6 +1358,23 @@
 
       particlesContainer.appendChild(p);
     }
+
+    /* ==========================
+       BACK TO TOP BUTTON
+       ========================== */
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 450) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   </script>
 
 </body>
