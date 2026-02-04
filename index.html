@@ -31,6 +31,8 @@
 
       --shadow: 0 15px 40px rgba(0,0,0,0.55);
       --radius: 18px;
+
+      --particle: rgba(255,255,255,0.08);
     }
 
     /* ==========================
@@ -49,6 +51,8 @@
       --accent3: #00a884;
 
       --shadow: 0 15px 40px rgba(0,0,0,0.10);
+
+      --particle: rgba(0,0,0,0.08);
     }
 
     * {
@@ -70,6 +74,7 @@
       color: var(--text);
       line-height: 1.65;
       transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
     }
 
     body.light {
@@ -87,6 +92,36 @@
 
     a:hover {
       opacity: 0.85;
+    }
+
+    /* ==========================
+       PARTICLES BACKGROUND
+       ========================== */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--particle);
+      animation: floatUp linear infinite;
+      opacity: 0.65;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(-120vh);
+      }
     }
 
     /* ==========================
@@ -379,6 +414,34 @@
       color: var(--accent);
     }
 
+    /* Resume Button */
+    .resume-btn {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(90deg, rgba(0,224,255,0.12), rgba(122,92,255,0.12));
+      color: var(--text);
+      transition: 0.25s ease;
+      width: fit-content;
+    }
+
+    body.light .resume-btn {
+      border: 1px solid rgba(0,0,0,0.10);
+      background: linear-gradient(90deg, rgba(0,119,255,0.12), rgba(122,92,255,0.10));
+      color: var(--text);
+    }
+
+    .resume-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,224,255,0.45);
+    }
+
     /* ==========================
        SECTION STYLING
        ========================== */
@@ -634,6 +697,9 @@
 
 <body>
 
+  <!-- PARTICLES -->
+  <div id="particles"></div>
+
   <!-- PROGRESS BAR -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
@@ -649,6 +715,7 @@
         <a href="#experience" class="nav-item">Experience</a>
         <a href="#education" class="nav-item">Education</a>
         <a href="#skills" class="nav-item">Skills</a>
+        <a href="#languages" class="nav-item">Languages</a>
         <a href="#casestudies" class="nav-item">Case Studies</a>
         <a href="#impact" class="nav-item">Impact</a>
         <a href="#contact" class="nav-item">Contact</a>
@@ -685,6 +752,11 @@
             <div class="chip">Escalation Handling</div>
             <div class="chip">Community Analytics</div>
           </div>
+
+          <!-- DOWNLOAD RESUME BUTTON -->
+          <a class="resume-btn" href="resume.pdf" target="_blank">
+            <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
+          </a>
         </div>
       </div>
 
@@ -911,6 +983,20 @@
       </div>
     </section>
 
+    <!-- LANGUAGES -->
+    <section id="languages" class="fade-up">
+      <h2 class="section-title">Languages</h2>
+      <p class="section-sub">
+        Comfortable communicating with global communities across multiple languages.
+      </p>
+
+      <div class="skills">
+        <div class="skill"><strong>English</strong></div>
+        <div class="skill"><strong>Hindi</strong></div>
+        <div class="skill"><strong>Marathi</strong></div>
+      </div>
+    </section>
+
     <!-- CASE STUDIES -->
     <section id="casestudies" class="fade-up">
       <h2 class="section-title">Case Studies</h2>
@@ -1026,6 +1112,11 @@
             <div><i class="fa-solid fa-envelope"></i> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></div>
             <div><i class="fa-brands fa-telegram"></i> <a href="https://t.me/SwatWeb3" target="_blank">t.me/SwatWeb3</a></div>
             <div><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a></div>
+            <div style="margin-top:14px;">
+              <a class="resume-btn" href="resume.pdf" target="_blank">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
+              </a>
+            </div>
           </div>
         </div>
 
@@ -1104,11 +1195,9 @@
       localStorage.setItem("theme", mode);
     }
 
-    // Load saved theme
     const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
 
-    // Toggle theme on click
     toggleBtn.addEventListener("click", () => {
       if (document.body.classList.contains("light")) {
         setTheme("dark");
@@ -1116,6 +1205,33 @@
         setTheme("light");
       }
     });
+
+    /* ==========================
+       PARTICLES GENERATOR
+       Very light performance
+       ========================== */
+    const particlesContainer = document.getElementById("particles");
+    const particleCount = 35;
+
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement("div");
+      p.classList.add("particle");
+
+      const size = Math.random() * 4 + 2;
+      p.style.width = size + "px";
+      p.style.height = size + "px";
+
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.top = Math.random() * 100 + "vh";
+
+      const duration = Math.random() * 25 + 15;
+      p.style.animationDuration = duration + "s";
+
+      const delay = Math.random() * 15;
+      p.style.animationDelay = delay + "s";
+
+      particlesContainer.appendChild(p);
+    }
   </script>
 
 </body>
