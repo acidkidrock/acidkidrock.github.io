@@ -594,18 +594,22 @@ body.light .menu-toggle:hover {
     }
 
     .hero-side {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
     }
 
-    .mini-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
-    }
+
+  .mini-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+}
+
 
     body.light .mini-card {
       background: rgba(0,0,0,0.02);
@@ -1218,7 +1222,7 @@ body.light .menu-toggle:hover {
     <div class="hero fade-up show">
       <div class="hero-card">
         <div class="hero-content">
-          <h1>Community <span>Operations</span><br/>Manager</h1>
+          <h1>Community <span>Operations</span> Manager</h1>
 
           <div class="badge-row">
             <div class="badge"><i class="fa-solid fa-location-dot"></i> India</div>
@@ -1270,9 +1274,12 @@ body.light .menu-toggle:hover {
         <div class="mini-card">
           <h3>Quick Profile</h3>
           <p>
-            I manage Web3 communities like a structured business function focused on engagement,
-            support workflows, safety and scalable community operations.
+             I manage Web3 communities like a structured business function focused on engagement,
+             support workflows, safety and scalable operations. I build SOPs, escalation systems,
+             shift planning workflows, and internal coordination frameworks that help projects scale
+             while maintaining trust and stability.
           </p>
+
         </div>
 
         <div class="mini-card">
