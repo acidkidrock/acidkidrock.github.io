@@ -1128,6 +1128,21 @@ body.light footer {
   p, li {
     line-height: 1.7;
   }
+
+  /* NEW MOBILE IMPROVEMENTS */
+  .job ul li {
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+
+  .job-meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
 }
 
 </style>
@@ -1855,6 +1870,14 @@ if (menuToggle && navLinksBox) {
       navLinksBox.classList.remove("show");
     }
   });
+
+  // Fallback: show everything after 1.5 seconds if observer didn't fire
+setTimeout(() => {
+  if (document.querySelectorAll('.fade-up:not(.show)').length > 0) {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('show'));
+  }
+}, 1500);
+
 
 }
 
