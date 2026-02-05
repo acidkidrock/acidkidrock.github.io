@@ -277,25 +277,30 @@ body.light .menu-toggle:hover {
 /* MOBILE NAV */
 @media (max-width: 900px) {
 
+  /* Push content down a bit so navbar doesn't overlap */
   .container {
     padding-top: 40px;
   }
 
   .nav-links {
-    position: absolute;
+    position: fixed;   /* ✅ FIXED (not absolute) */
     top: 72px;
     left: 18px;
     right: 18px;
+
     display: none;
     flex-direction: column;
     gap: 12px;
+
     padding: 16px;
     border-radius: 18px;
     border: 1px solid var(--border);
+
     background: rgba(11, 13, 18, 0.92);
     backdrop-filter: blur(16px);
     box-shadow: var(--shadow);
-    z-index: 1000;
+
+    z-index: 9999;  /* keep it always above */
   }
 
   body.light .nav-links {
@@ -325,6 +330,7 @@ body.light .menu-toggle:hover {
   margin: auto;
   padding: 55px 18px;
 }
+
 
 /* ==========================
    HERO
@@ -1794,7 +1800,9 @@ const navLinksBox = document.getElementById("navLinks");
 
 if (menuToggle && navLinksBox) {
 
-  menuToggle.addEventListener("click", () => {
+  // Toggle menu open/close
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevents outside click closing instantly
     navLinksBox.classList.toggle("show");
   });
 
@@ -1803,8 +1811,10 @@ if (menuToggle && navLinksBox) {
     link.addEventListener("click", (e) => {
       e.preventDefault();
 
+      // Close menu
       navLinksBox.classList.remove("show");
 
+      // Smooth scroll
       const targetId = link.getAttribute("href");
       const targetSection = document.querySelector(targetId);
 
