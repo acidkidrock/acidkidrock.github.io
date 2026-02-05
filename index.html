@@ -14,6 +14,136 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    
+/* ==========================
+   NAVBAR RESPONSIVE (PREMIUM FIX)
+   ========================== */
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  user-select: none;
+}
+
+.logo a {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
+body.light .nav-links a.active,
+body.light .nav-links a:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+
+/* Hamburger Button */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 900;
+  font-size: 0.95rem;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+}
+
+.menu-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,224,255,0.30);
+}
+
+body.light .menu-toggle:hover {
+  border-color: rgba(0,119,255,0.35);
+}
+
+/* MOBILE NAV FIX */
+@media (max-width: 900px) {
+
+  .nav-container {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 18px;
+    right: 18px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(11, 13, 18, 0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+    z-index: 9999;
+  }
+
+  body.light .nav-links {
+    background: rgba(246, 247, 251, 0.92);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  /* Keep Theme button visible */
+  .theme-toggle {
+    justify-self: end;
+  }
+}
+
+    
     /* ==========================
        THEME VARIABLES (DARK)
        ========================== */
@@ -1005,7 +1135,8 @@
 </head>
 
 <body>
-
+<div id="top"></div>
+  
   <!-- PARTICLES -->
   <div id="particles"></div>
 
@@ -1015,26 +1146,39 @@
   </div>
 
   <!-- NAV -->
+  
   <nav>
-    <div class="nav-container">
-      <div class="logo"><span>⚡</span> Swatantra Dwivedi</div>
+  <div class="nav-container">
 
-      <div class="nav-links">
-        <a href="#about" class="nav-item">About</a>
-        <a href="#experience" class="nav-item">Experience</a>
-        <a href="#education" class="nav-item">Education</a>
-        <a href="#skills" class="nav-item">Skills</a>
-        <a href="#languages" class="nav-item">Languages</a>
-        <a href="#casestudies" class="nav-item">Case Studies</a>
-        <a href="#impact" class="nav-item">Impact</a>
-        <a href="#contact" class="nav-item">Contact</a>
-
-        <button class="theme-toggle" id="themeToggle">
-          <i class="fa-solid fa-moon"></i> Theme
-        </button>
-      </div>
+    <!-- LEFT: LOGO -->
+    <div class="logo">
+      <a href="#top"><span>⚡</span> Swatantra Dwivedi</a>
     </div>
-  </nav>
+
+    <!-- CENTER: LINKS -->
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="nav-item">About</a>
+      <a href="#experience" class="nav-item">Experience</a>
+      <a href="#education" class="nav-item">Education</a>
+      <a href="#skills" class="nav-item">Skills</a>
+      <a href="#languages" class="nav-item">Languages</a>
+      <a href="#casestudies" class="nav-item">Case Studies</a>
+      <a href="#impact" class="nav-item">Impact</a>
+      <a href="#contact" class="nav-item">Contact</a>
+    </div>
+
+    <!-- RIGHT: HAMBURGER (MOBILE ONLY) -->
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- RIGHT: THEME BUTTON -->
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fa-solid fa-moon"></i> Theme
+    </button>
+
+  </div>
+</nav>
 
   <div class="container">
 
@@ -1616,6 +1760,21 @@
 
       particlesContainer.appendChild(p);
     }
+    // Mobile Hamburger Menu Toggle
+const menuToggle = document.getElementById("menuToggle");
+const navLinksBox = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinksBox.classList.toggle("show");
+});
+
+// Auto-close menu after clicking a link (mobile)
+document.querySelectorAll(".nav-item").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinksBox.classList.remove("show");
+  });
+});
+
   </script>
 
 </body>
