@@ -305,6 +305,10 @@ body.light .menu-toggle:hover {
   .menu-toggle {
     display: inline-flex;
   }
+  
+.menu-toggle i {
+  font-size: 1rem;
+  }
 }
 
 /* ==========================
@@ -1796,6 +1800,18 @@ if (menuToggle && navLinksBox) {
     });
   });
 }
+
+    // Close menu when user scrolls
+window.addEventListener("scroll", () => {
+  navLinksBox.classList.remove("show");
+});
+
+// Close menu if user clicks outside navbar
+document.addEventListener("click", (e) => {
+  if (!navLinksBox.contains(e.target) && !menuToggle.contains(e.target)) {
+    navLinksBox.classList.remove("show");
+  }
+});
 
 
 </script>
