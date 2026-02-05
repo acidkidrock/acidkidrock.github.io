@@ -954,6 +954,68 @@
         font-size: 2.2rem;
       }
     }
+
+    /* ==========================
+       SCROLL TO TOP/BOTTOM BUTTONS (PREMIUM)
+       ========================== */
+    #scrollTopBtn, #scrollBottomBtn {
+      position: fixed;
+      right: 22px;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 9999;
+
+      font-size: 18px;
+      font-weight: 900;
+
+      color: rgba(255,255,255,0.92);
+      background: rgba(20, 20, 25, 0.65);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow: 0px 10px 28px rgba(0,0,0,0.45);
+
+      transition: all 0.25s ease;
+    }
+
+    body.light #scrollTopBtn,
+    body.light #scrollBottomBtn {
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.75);
+      color: rgba(15, 23, 42, 0.95);
+      box-shadow: 0px 10px 28px rgba(0,0,0,0.15);
+    }
+
+    #scrollTopBtn {
+      bottom: 92px;
+    }
+
+    #scrollBottomBtn {
+      bottom: 28px;
+    }
+
+    #scrollTopBtn:hover,
+    #scrollBottomBtn:hover {
+      transform: scale(1.12);
+      border-color: rgba(0,224,255,0.35);
+      box-shadow: 0px 14px 32px rgba(0,0,0,0.55);
+    }
+
+    body.light #scrollTopBtn:hover,
+    body.light #scrollBottomBtn:hover {
+      border-color: rgba(0,119,255,0.35);
+      box-shadow: 0px 14px 32px rgba(0,0,0,0.22);
+    }
+
+    #scrollTopBtn:active,
+    #scrollBottomBtn:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 
@@ -1014,14 +1076,14 @@
             <i class="fa-solid fa-people-group"></i> People Management •
             <i class="fa-solid fa-diagram-project"></i> Community Systems •
             <i class="fa-solid fa-gears"></i> Process Building •
-            <i class="fa-solid fa-coins"></i> Exchange Support
+            <i class="fa-solid fa-coins"></i> Web3 Support Ops
           </p>
 
           <div class="chips">
             <div class="chip">Discord Ops</div>
             <div class="chip">Telegram Growth</div>
             <div class="chip">Moderator Systems</div>
-            <div class="chip">Exchange Support</div>
+            <div class="chip">Web3 Operations</div>
             <div class="chip">Escalation Handling</div>
             <div class="chip">Community Analytics</div>
           </div>
@@ -1474,6 +1536,10 @@
 
   </div>
 
+  <!-- SCROLL BUTTONS -->
+  <button id="scrollTopBtn" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+  <button id="scrollBottomBtn" title="Go to Bottom"><i class="fa-solid fa-arrow-down"></i></button>
+
   <script>
     // Auto update year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1569,6 +1635,39 @@
 
       particlesContainer.appendChild(p);
     }
+
+    /* ==========================
+       SCROLL BUTTONS LOGIC
+       ========================== */
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    const scrollBottomBtn = document.getElementById("scrollBottomBtn");
+
+    window.addEventListener("scroll", () => {
+      let scrollPosition = window.scrollY;
+      let pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Show Top button only if user scrolls down
+      if (scrollPosition > 350) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+
+      // Show Bottom button only if user is not near bottom
+      if (scrollPosition < pageHeight - 350) {
+        scrollBottomBtn.style.display = "block";
+      } else {
+        scrollBottomBtn.style.display = "none";
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    scrollBottomBtn.addEventListener("click", () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    });
   </script>
 
 </body>
