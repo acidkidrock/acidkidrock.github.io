@@ -92,7 +92,6 @@ body.light .nav-links a:hover {
 
 /* Theme Button */
 .theme-toggle {
-  document.body.style.transition = "background 0.3s ease, color 0.3s ease";
   justify-self: end;
   cursor: pointer;
   border: 1px solid var(--border);
@@ -1202,8 +1201,10 @@ body.light .menu-toggle:hover {
 
 </head>
 
-<body>
+</div>
+
 <div id="top"></div>
+
   
   <!-- PARTICLES -->
   <div id="particles"></div>
@@ -1861,22 +1862,24 @@ body.light .menu-toggle:hover {
 
       particlesContainer.appendChild(p);
     }
-    // Mobile Hamburger Menu Toggle
+// Mobile Hamburger Menu Toggle
 const menuToggle = document.getElementById("menuToggle");
 const navLinksBox = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-  navLinksBox.classList.toggle("show");
-});
-
-// Auto-close menu after clicking a link (mobile)
-document.querySelectorAll(".nav-item").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinksBox.classList.remove("show");
+if (menuToggle && navLinksBox) {
+  menuToggle.addEventListener("click", () => {
+    navLinksBox.classList.toggle("show");
   });
-});
 
-  </script>
+  // Auto-close menu after clicking a link (mobile)
+  document.querySelectorAll(".nav-item").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinksBox.classList.remove("show");
+    });
+  });
+}
 
+
+</script>
 </body>
 </html>
