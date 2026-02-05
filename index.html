@@ -1073,7 +1073,16 @@ body.light footer {
 .fade-up.show {
   opacity: 1;
   transform: translateY(0);
+  
 }
+  /* FORCE SHOW SECTIONS ON MOBILE (FIX EXPERIENCE BLANK ISSUE) */
+@media (max-width: 768px) {
+  .fade-up {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
 
 /* ==========================
    MOBILE LAYOUT
@@ -1718,13 +1727,21 @@ body.light footer {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.15 });
+       if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.01, rootMargin: "0px 0px -50px 0px" });
+
 
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+
+    // Backup: Force show all sections on mobile if observer fails
+if (window.innerWidth <= 768) {
+  setTimeout(() => {
+    document.querySelectorAll(".fade-up").forEach(el => el.classList.add("show"));
+  }, 500);
+}
 
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-item");
@@ -1772,7 +1789,8 @@ body.light footer {
     });
 
     const particlesContainer = document.getElementById("particles");
-    const particleCount = 35;
+    const particleCount = window.innerWidth <= 768 ? 10 : 35;
+
 
     for (let i = 0; i < particleCount; i++) {
       const p = document.createElement("div");
