@@ -277,6 +277,10 @@ body.light .menu-toggle:hover {
 /* MOBILE NAV */
 @media (max-width: 900px) {
 
+  .container {
+    padding-top: 40px;
+  }
+
   .nav-links {
     position: absolute;
     top: 72px;
@@ -291,7 +295,7 @@ body.light .menu-toggle:hover {
     background: rgba(11, 13, 18, 0.92);
     backdrop-filter: blur(16px);
     box-shadow: var(--shadow);
-    z-index: 9999;
+    z-index: 1000;
   }
 
   body.light .nav-links {
@@ -305,11 +309,13 @@ body.light .menu-toggle:hover {
   .menu-toggle {
     display: inline-flex;
   }
-  
-.menu-toggle i {
-  font-size: 1rem;
+
+  .menu-toggle i {
+    font-size: 1rem;
   }
+
 }
+
 
 /* ==========================
    CONTAINER
@@ -1783,35 +1789,46 @@ body.light footer {
     }
     
 // Mobile Hamburger Menu Toggle
-    
 const menuToggle = document.getElementById("menuToggle");
 const navLinksBox = document.getElementById("navLinks");
 
 if (menuToggle && navLinksBox) {
+
   menuToggle.addEventListener("click", () => {
     navLinksBox.classList.toggle("show");
   });
 
-  // Auto-close menu after clicking a link
-  
+  // Close menu after clicking a link + smooth scroll
   document.querySelectorAll(".nav-item").forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
       navLinksBox.classList.remove("show");
+
+      const targetId = link.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        setTimeout(() => {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
     });
   });
-}
 
-    // Close menu when user scrolls
-window.addEventListener("scroll", () => {
-  navLinksBox.classList.remove("show");
-});
-
-// Close menu if user clicks outside navbar
-document.addEventListener("click", (e) => {
-  if (!navLinksBox.contains(e.target) && !menuToggle.contains(e.target)) {
+  // Close menu when user scrolls
+  window.addEventListener("scroll", () => {
     navLinksBox.classList.remove("show");
-  }
-});
+  });
+
+  // Close menu if user clicks outside navbar
+  document.addEventListener("click", (e) => {
+    if (!navLinksBox.contains(e.target) && !menuToggle.contains(e.target)) {
+      navLinksBox.classList.remove("show");
+    }
+  });
+
+}
 
 
 </script>
