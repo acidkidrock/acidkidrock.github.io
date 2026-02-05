@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* ==========================
+       THEME VARIABLES (DARK)
+       ========================== */
     :root {
       --bg: #0b0d12;
       --bg2: #0f121a;
@@ -26,12 +29,15 @@
       --accent2: #7a5cff;
       --accent3: #00ffb3;
 
-      --shadow: 0 15px 40px rgba(0,0,0,0.55);
+      --shadow: 0 18px 55px rgba(0,0,0,0.65);
       --radius: 18px;
 
       --particle: rgba(255,255,255,0.08);
     }
 
+    /* ==========================
+       LIGHT THEME VARIABLES
+       ========================== */
     body.light {
       --bg: #f6f7fb;
       --bg2: #ffffff;
@@ -44,7 +50,8 @@
       --accent2: #7a5cff;
       --accent3: #00a884;
 
-      --shadow: 0 15px 40px rgba(0,0,0,0.10);
+      --shadow: 0 18px 55px rgba(0,0,0,0.10);
+
       --particle: rgba(0,0,0,0.08);
     }
 
@@ -60,9 +67,9 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at top, rgba(0,224,255,0.10), transparent 40%),
-                  radial-gradient(circle at right, rgba(122,92,255,0.12), transparent 45%),
-                  radial-gradient(circle at left, rgba(0,255,179,0.08), transparent 45%),
+      background: radial-gradient(circle at top, rgba(0,224,255,0.12), transparent 40%),
+                  radial-gradient(circle at right, rgba(122,92,255,0.14), transparent 45%),
+                  radial-gradient(circle at left, rgba(0,255,179,0.10), transparent 45%),
                   var(--bg);
       color: var(--text);
       line-height: 1.65;
@@ -84,11 +91,11 @@
     }
 
     a:hover {
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     /* ==========================
-       PARTICLES
+       PARTICLES BACKGROUND
        ========================== */
     #particles {
       position: fixed;
@@ -105,12 +112,12 @@
       border-radius: 50%;
       background: var(--particle);
       animation: floatUp linear infinite;
-      opacity: 0.65;
+      opacity: 0.6;
     }
 
     @keyframes floatUp {
       from { transform: translateY(0px); }
-      to { transform: translateY(-120vh); }
+      to { transform: translateY(-130vh); }
     }
 
     /* ==========================
@@ -179,7 +186,7 @@
       display: flex;
       gap: 12px;
       font-size: 0.95rem;
-      font-weight: 700;
+      font-weight: 800;
       flex-wrap: wrap;
       align-items: center;
     }
@@ -201,6 +208,7 @@
       background: rgba(0,0,0,0.05);
     }
 
+    /* Toggle Button */
     .theme-toggle {
       cursor: pointer;
       border: 1px solid var(--border);
@@ -208,7 +216,7 @@
       color: var(--text);
       border-radius: 12px;
       padding: 8px 12px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 0.9rem;
       display: flex;
       align-items: center;
@@ -245,32 +253,40 @@
     }
 
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 30px;
       box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
     }
 
     body.light .hero-card {
+      border: 1px solid rgba(0,0,0,0.10);
       background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.01));
     }
 
+    /* Animated Border Glow */
     .hero-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top left, rgba(0,224,255,0.18), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(122,92,255,0.18), transparent 55%);
-      opacity: 0.8;
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.25), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(122,92,255,0.25), transparent 55%);
+      opacity: 0.95;
       z-index: 0;
+      animation: glowMove 6s ease-in-out infinite alternate;
     }
 
     body.light .hero-card::before {
-      background: radial-gradient(circle at top left, rgba(0,119,255,0.15), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(122,92,255,0.15), transparent 55%);
+      background: radial-gradient(circle at top left, rgba(0,119,255,0.20), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(122,92,255,0.18), transparent 55%);
+    }
+
+    @keyframes glowMove {
+      0% { transform: scale(1) translateX(0px); }
+      100% { transform: scale(1.05) translateX(18px); }
     }
 
     .hero-content {
@@ -279,26 +295,28 @@
     }
 
     .hero h1 {
-      font-size: 2.7rem;
-      line-height: 1.15;
+      font-size: 2.9rem;
+      line-height: 1.05;
       margin-bottom: 12px;
-      font-weight: 900;
-      letter-spacing: -0.6px;
+      font-weight: 950;
+      letter-spacing: -0.8px;
     }
 
     .hero h1 span {
       color: var(--accent);
+      text-shadow: 0 0 18px rgba(0,224,255,0.25);
     }
 
     .hero p {
       color: var(--muted);
-      font-size: 1.03rem;
+      font-size: 1.05rem;
       margin-top: 10px;
     }
 
     .tagline {
-      margin-top: 14px;
-      font-size: 0.96rem;
+      margin-top: 16px;
+      font-size: 0.97rem;
+      font-weight: 700;
       color: rgba(230,230,230,0.78);
     }
 
@@ -306,8 +324,39 @@
       color: rgba(15, 23, 42, 0.75);
     }
 
+    /* Badge Row */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      font-weight: 900;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.85);
+    }
+
+    body.light .badge {
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(0,0,0,0.03);
+      color: rgba(15, 23, 42, 0.85);
+    }
+
+    .badge i {
+      color: var(--accent3);
+    }
+
     .chips {
-      margin-top: 18px;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -315,12 +364,13 @@
 
     .chip {
       font-size: 0.88rem;
-      padding: 7px 12px;
+      padding: 8px 13px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
       color: rgba(255,255,255,0.86);
-      font-weight: 700;
+      font-weight: 800;
+      transition: 0.25s ease;
     }
 
     body.light .chip {
@@ -329,6 +379,62 @@
       color: rgba(15, 23, 42, 0.85);
     }
 
+    .chip:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,224,255,0.35);
+      background: rgba(0,224,255,0.06);
+      box-shadow: 0 0 20px rgba(0,224,255,0.10);
+    }
+
+    body.light .chip:hover {
+      border-color: rgba(0,119,255,0.30);
+      background: rgba(0,119,255,0.05);
+      box-shadow: 0 0 18px rgba(0,119,255,0.10);
+    }
+
+    /* CTA Buttons */
+    .cta-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      transition: 0.25s ease;
+    }
+
+    body.light .btn {
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(0,0,0,0.03);
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(0,224,255,0.16), rgba(122,92,255,0.14));
+      border-color: rgba(0,224,255,0.30);
+    }
+
+    body.light .btn.primary {
+      background: linear-gradient(90deg, rgba(0,119,255,0.14), rgba(122,92,255,0.12));
+      border-color: rgba(0,119,255,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    /* Hero Side Cards */
     .hero-side {
       display: flex;
       flex-direction: column;
@@ -350,37 +456,12 @@
     .mini-card h3 {
       font-size: 1rem;
       margin-bottom: 10px;
-      font-weight: 900;
+      font-weight: 950;
     }
 
     .mini-card p {
       color: var(--muted);
       font-size: 0.95rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.85);
-      margin-top: 10px;
-      width: fit-content;
-    }
-
-    body.light .badge {
-      border: 1px solid rgba(0,0,0,0.10);
-      background: rgba(0,0,0,0.03);
-      color: rgba(15, 23, 42, 0.85);
-    }
-
-    .badge i {
-      color: var(--accent);
     }
 
     .socials {
@@ -400,7 +481,7 @@
       background: rgba(255,255,255,0.04);
       color: rgba(255,255,255,0.85);
       font-size: 0.95rem;
-      font-weight: 800;
+      font-weight: 900;
       transition: 0.25s ease;
     }
 
@@ -428,25 +509,25 @@
     }
 
     /* ==========================
-       SECTION
+       SECTION STYLING
        ========================== */
     section {
-      margin-top: 70px;
+      margin-top: 75px;
       scroll-margin-top: 90px;
     }
 
     .section-title {
-      font-size: 1.65rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-      letter-spacing: -0.4px;
+      font-size: 1.75rem;
+      font-weight: 950;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
     }
 
     .section-sub {
       color: var(--muted);
       margin-bottom: 22px;
       max-width: 900px;
-      font-size: 1rem;
+      font-size: 1.02rem;
     }
 
     .grid {
@@ -462,6 +543,8 @@
       padding: 22px;
       box-shadow: 0 12px 35px rgba(0,0,0,0.40);
       transition: 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     body.light .card {
@@ -478,15 +561,15 @@
     }
 
     .card h3 {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       margin-bottom: 10px;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: -0.2px;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
     }
 
     /* ==========================
@@ -533,33 +616,40 @@
     }
 
     .job-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      margin-bottom: 6px;
+      font-size: 1.18rem;
+      font-weight: 950;
+      margin-bottom: 8px;
       letter-spacing: -0.3px;
     }
 
+    /* Meta Row Fix */
     .job-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      margin-top: 2px;
     }
 
     .meta-badge {
-      padding: 6px 12px;
-      border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 900;
-      border: 1px solid rgba(255,255,255,0.12);
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.80);
+      color: rgba(255,255,255,0.78);
     }
 
     body.light .meta-badge {
       border: 1px solid rgba(0,0,0,0.10);
       background: rgba(0,0,0,0.03);
-      color: rgba(15, 23, 42, 0.78);
+      color: rgba(15, 23, 42, 0.70);
+    }
+
+    .meta-badge i {
+      margin-right: 7px;
+      color: var(--accent3);
     }
 
     .job ul {
@@ -569,172 +659,153 @@
     .job li {
       margin-bottom: 8px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
+    }
+
+    /* Promotion Timeline (Work X) */
+    .timeline {
+      margin-top: 14px;
+      padding-left: 12px;
+      border-left: 2px solid rgba(255,255,255,0.10);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    body.light .timeline {
+      border-left: 2px solid rgba(0,0,0,0.10);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 16px rgba(0,224,255,0.20);
+    }
+
+    .timeline-item h4 {
+      font-size: 1.02rem;
+      font-weight: 950;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
     /* ==========================
-       SKILLS CHIPS PREMIUM
+       SKILLS & LANGUAGES CHIP GRID
        ========================== */
-    .skills-grid {
+    .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
-    .skill-chip {
-      padding: 8px 14px;
+    .skill {
+      padding: 9px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 800;
+      color: rgba(255,255,255,0.86);
+      font-weight: 900;
       transition: 0.25s ease;
     }
 
-    body.light .skill-chip {
+    body.light .skill {
       border: 1px solid rgba(0,0,0,0.10);
       background: rgba(0,0,0,0.03);
       color: rgba(15, 23, 42, 0.85);
     }
 
-    .skill-chip i {
-      color: var(--accent3);
-      margin-right: 8px;
-    }
-
-    .skill-chip:hover {
+    .skill:hover {
       transform: translateY(-2px);
       border-color: rgba(0,224,255,0.35);
-      background: rgba(0,224,255,0.05);
+      background: rgba(0,224,255,0.06);
     }
 
-    body.light .skill-chip:hover {
+    body.light .skill:hover {
       border-color: rgba(0,119,255,0.35);
       background: rgba(0,119,255,0.06);
     }
 
+    .skill i {
+      margin-right: 8px;
+      color: var(--accent3);
+    }
+
     /* ==========================
-       CASE STUDY PREMIUM
+       CASE STUDIES
        ========================== */
-    .case-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-card::after {
-      content: "";
-      position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,224,255,0.12), transparent 70%);
-      z-index: 0;
-    }
-
-    body.light .case-card::after {
-      background: radial-gradient(circle, rgba(0,119,255,0.12), transparent 70%);
-    }
-
-    .case-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .case-head {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .case-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-    }
-
-    .case-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .case-tag {
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.80);
-    }
-
-    body.light .case-tag {
-      border: 1px solid rgba(0,0,0,0.10);
-      background: rgba(0,0,0,0.03);
-      color: rgba(15, 23, 42, 0.80);
-    }
-
-    .case-section {
+    .case-study {
+      border-left: 4px solid var(--accent);
+      padding-left: 16px;
       margin-top: 14px;
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
     }
 
-    body.light .case-section {
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(0,0,0,0.02);
-    }
-
-    .case-section h4 {
-      font-size: 0.95rem;
-      font-weight: 900;
+    .case-study h4 {
+      font-size: 1.05rem;
+      font-weight: 950;
       margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
-    .case-section h4 i {
-      color: var(--accent);
-    }
-
-    .case-section p {
+    .case-study p {
       color: var(--muted);
       font-size: 0.95rem;
+      margin-bottom: 10px;
     }
 
-    .case-section ul {
+    .case-study ul {
       padding-left: 18px;
-      margin-top: 8px;
     }
 
-    .case-section li {
+    .case-study li {
       margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
     /* ==========================
-       CONTACT BUTTON
+       CONTACT
        ========================== */
+    .contact-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 1rem;
+    }
+
+    .contact-box a {
+      font-weight: 950;
+    }
+
+    /* Resume Button */
     .resume-btn {
-      margin-top: 14px;
+      margin-top: 16px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 12px 16px;
       border-radius: 14px;
-      font-weight: 900;
+      font-weight: 950;
       font-size: 0.95rem;
       border: 1px solid rgba(255,255,255,0.12);
-      background: linear-gradient(90deg, rgba(0,224,255,0.12), rgba(122,92,255,0.12));
+      background: linear-gradient(90deg, rgba(0,224,255,0.14), rgba(122,92,255,0.12));
       color: var(--text);
       transition: 0.25s ease;
       width: fit-content;
@@ -742,27 +813,13 @@
 
     body.light .resume-btn {
       border: 1px solid rgba(0,0,0,0.10);
-      background: linear-gradient(90deg, rgba(0,119,255,0.12), rgba(122,92,255,0.10));
+      background: linear-gradient(90deg, rgba(0,119,255,0.14), rgba(122,92,255,0.10));
       color: var(--text);
     }
 
     .resume-btn:hover {
       transform: translateY(-2px);
       border-color: rgba(0,224,255,0.45);
-    }
-
-    /* ==========================
-       ANIMATION
-       ========================== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: 0.75s ease;
-    }
-
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* ==========================
@@ -781,6 +838,23 @@
       color: rgba(15, 23, 42, 0.70);
     }
 
+    /* ==========================
+       ANIMATION
+       ========================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.75s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================
+       MOBILE
+       ========================== */
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -789,7 +863,7 @@
         grid-template-columns: 1fr;
       }
       .hero h1 {
-        font-size: 2.15rem;
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -797,12 +871,15 @@
 
 <body>
 
+  <!-- PARTICLES -->
   <div id="particles"></div>
 
+  <!-- PROGRESS BAR -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
+  <!-- NAV -->
   <nav>
     <div class="nav-container">
       <div class="logo"><span>⚡</span> Swatantra Dwivedi</div>
@@ -817,6 +894,7 @@
         <a href="#impact" class="nav-item">Impact</a>
         <a href="#contact" class="nav-item">Contact</a>
 
+        <!-- THEME TOGGLE -->
         <button class="theme-toggle" id="themeToggle">
           <i class="fa-solid fa-moon"></i> Theme
         </button>
@@ -830,14 +908,25 @@
     <div class="hero fade-up show">
       <div class="hero-card">
         <div class="hero-content">
-          <h1>Community <span>Operations</span> Manager</h1>
-          <p>
-            Web3 community professional with strong experience managing large scale communities,
+          <h1>Community <span>Operations</span><br/>Manager</h1>
+
+          <div class="badge-row">
+            <div class="badge"><i class="fa-solid fa-location-dot"></i> India</div>
+            <div class="badge"><i class="fa-solid fa-globe"></i> Available for Remote Roles</div>
+            <div class="badge"><i class="fa-solid fa-shield-halved"></i> Web3 Ops + Exchange Support</div>
+          </div>
+
+          <p style="margin-top:14px;">
+            Web3 community professional experienced in managing large-scale communities,
             leading teams and building scalable systems across Discord & Telegram.
           </p>
 
           <p class="tagline">
-            Community Operations • People Management • Community Systems • Process Building • Exchange Support
+            <i class="fa-solid fa-users"></i> Community Ops •
+            <i class="fa-solid fa-people-group"></i> People Management •
+            <i class="fa-solid fa-diagram-project"></i> Community Systems •
+            <i class="fa-solid fa-gears"></i> Process Building •
+            <i class="fa-solid fa-coins"></i> Exchange Support
           </p>
 
           <div class="chips">
@@ -848,6 +937,12 @@
             <div class="chip">Escalation Handling</div>
             <div class="chip">Community Analytics</div>
           </div>
+
+          <div class="cta-row">
+            <a href="#contact" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+            <a href="#experience" class="btn"><i class="fa-solid fa-briefcase"></i> View Experience</a>
+          </div>
+
         </div>
       </div>
 
@@ -856,16 +951,8 @@
           <h3>Quick Profile</h3>
           <p>
             I manage Web3 communities like a structured business function focused on engagement,
-            support workflows, safety and scalable community operations.
+            support workflows, safety, and scalable community operations.
           </p>
-
-          <div class="badge">
-            <i class="fa-solid fa-location-dot"></i> India
-          </div>
-
-          <div class="badge">
-            <i class="fa-solid fa-globe"></i> Available for Remote Roles
-          </div>
         </div>
 
         <div class="mini-card">
@@ -906,7 +993,7 @@
 
       <div class="grid">
         <div class="card">
-          <h3><i class="fa-solid fa-diagram-project" style="color:var(--accent);"></i> Community Systems & Process Building</h3>
+          <h3><i class="fa-solid fa-diagram-project"></i> Community Systems & Process Building</h3>
           <p>
             I build SOPs, escalation flows, moderator workflows, onboarding guides and reporting systems that make
             community operations scalable and consistent.
@@ -914,7 +1001,7 @@
         </div>
 
         <div class="card">
-          <h3><i class="fa-solid fa-people-group" style="color:var(--accent2);"></i> People Management & Ops Leadership</h3>
+          <h3><i class="fa-solid fa-people-group"></i> People Management & Operations Leadership</h3>
           <p>
             I lead community teams across time zones, manage coverage planning, coordinate admins and ensure
             smooth internal communication between community, marketing and product teams.
@@ -933,50 +1020,75 @@
 
       <div class="experience">
 
+        <!-- OceanEX -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Community Manager</div>
+
             <div class="job-meta">
               <div class="meta-badge"><i class="fa-solid fa-building"></i> OceanEX (Bitocean Global)</div>
               <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Apr 2023 – Jan 2026</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Cayman Islands</div>
-              <div class="meta-badge"><i class="fa-solid fa-globe"></i> Remote</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Freelance</div>
+              <div class="meta-badge"><i class="fa-solid fa-wifi"></i> Remote</div>
+              <div class="meta-badge"><i class="fa-solid fa-handshake"></i> Freelance</div>
             </div>
 
             <ul>
               <li>Served as the primary community and support interface, managing high-volume user interactions across multiple platforms.</li>
               <li>Resolved complex issues related to spot trading, listings, order execution, deposits/withdrawals, KYC, and account security.</li>
               <li>Provided technical support for blockchain transactions including wallet operations, network confirmations, and transaction discrepancies.</li>
-              <li>Collaborated with engineering, operations, and compliance teams to escalate, investigate, and resolve critical cases.</li>
+              <li>Collaborated closely with engineering, operations, and compliance teams to escalate, investigate, and resolve critical cases.</li>
               <li>Supported new token listings by assisting onboarding, launch readiness, and post-listing user support.</li>
+              <li>Maintained clear, professional, and compliant communication across Telegram, Discord, Twitter/X, and official support channels.</li>
               <li><strong>Part of the VeChain Ecosystem</strong>, supported by the VeChain Foundation.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Work X Promotion Timeline -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Work X (Promotion Path)</div>
 
             <div class="job-meta">
               <div class="meta-badge"><i class="fa-solid fa-building"></i> Work X</div>
-              <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Sep 2023 – Feb 2025</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Zug, Switzerland</div>
-              <div class="meta-badge"><i class="fa-solid fa-globe"></i> Remote</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Freelance</div>
+              <div class="meta-badge"><i class="fa-solid fa-wifi"></i> Remote</div>
+              <div class="meta-badge"><i class="fa-solid fa-handshake"></i> Freelance</div>
             </div>
 
-            <ul>
-              <li><strong>Community Manager (Sep 2023 – Jul 2024):</strong> Supported regional/global moderation, handled escalations, improved engagement, and stayed aligned via weekly developer calls.</li>
-              <li><strong>Lead Community Manager (Aug 2024 – Feb 2025):</strong> Managed Telegram (47K+) and Discord (37K+), led 12+ specialists, built weekly execution plans, documented strategy, and supported brand communication.</li>
-              <li>Managed global & regional admins, ensuring smooth internal communication and coverage planning.</li>
-              <li>Monitored sentiment, analyzed feedback, and reported insights for data-driven decisions.</li>
-              <li>Built strong relationships with community members, investors, and Web3 professionals.</li>
-            </ul>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <h4>Community Manager</h4>
+                <p><i class="fa-solid fa-calendar"></i> Sep 2023 – Jul 2024</p>
+                <ul>
+                  <li>Moderated multiple regional chat groups and social channels to boost growth and foster a positive, inclusive environment.</li>
+                  <li>Delivered prompt responses to community inquiries and escalated issues as needed to maintain user trust.</li>
+                  <li>Monitored sentiment, feedback, and reviews to support data-driven improvements.</li>
+                  <li>Built strong relationships with community members, investors, and industry professionals.</li>
+                  <li>Stayed current with Web3 and community trends to continuously improve engagement strategies.</li>
+                </ul>
+              </div>
+
+              <div class="timeline-item">
+                <h4>Lead Community Manager</h4>
+                <p><i class="fa-solid fa-calendar"></i> Aug 2024 – Feb 2025</p>
+                <ul>
+                  <li>Managed global & regional admins for Telegram (47,000+) and Discord (37,000+) members.</li>
+                  <li>Led a team of 12+ Community Specialists and created weekly plans for announcements, promotions and giveaways.</li>
+                  <li>Ensured smooth internal communication, escalation handling, and coverage planning (leaves, availability, scheduling).</li>
+                  <li>Actively participated in weekly developer calls to stay aligned with project updates, timelines, and strategic direction.</li>
+                  <li>Documented strategy plans and analyzed server insights to support data-driven decisions.</li>
+                  <li>Collaborated with media, reputation, and public affairs professionals to support broader brand communication.</li>
+                </ul>
+              </div>
+
+            </div>
           </div>
         </div>
 
+        <!-- WhereAt -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Community Manager</div>
@@ -985,18 +1097,20 @@
               <div class="meta-badge"><i class="fa-solid fa-building"></i> WhereAt</div>
               <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Aug 2022 – Jun 2024</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Dubai, UAE</div>
-              <div class="meta-badge"><i class="fa-solid fa-globe"></i> Remote</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Freelance</div>
+              <div class="meta-badge"><i class="fa-solid fa-wifi"></i> Remote</div>
+              <div class="meta-badge"><i class="fa-solid fa-handshake"></i> Freelance</div>
             </div>
 
             <ul>
-              <li>Managed & moderated communities, growing to <strong>11,000+</strong> members.</li>
-              <li>Built and maintained active Discord and Telegram groups.</li>
-              <li>Reported community sentiment and insights to support strategic improvements.</li>
+              <li>Managed & moderated social media groups to grow community to 11,000+ members.</li>
+              <li>Responded to user inquiries & feedback, building trust and engagement.</li>
+              <li>Built, grew, and managed engaged communities on Discord and Telegram.</li>
+              <li>Analyzed server insights for data-driven decisions and delivered sentiment reports.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Moonlift -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Community Manager</div>
@@ -1005,38 +1119,42 @@
               <div class="meta-badge"><i class="fa-solid fa-building"></i> Moonlift Capital</div>
               <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Jul 2020 – Feb 2023</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Netherlands</div>
-              <div class="meta-badge"><i class="fa-solid fa-globe"></i> Remote</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Freelance</div>
+              <div class="meta-badge"><i class="fa-solid fa-wifi"></i> Remote</div>
+              <div class="meta-badge"><i class="fa-solid fa-handshake"></i> Freelance</div>
             </div>
 
             <ul>
-              <li>Grew Telegram community from <strong>2,000 to 30,000+</strong> members organically through AMAs, giveaways, and strategy.</li>
-              <li>Reported department progress to Head of Communication.</li>
-              <li>Supported shift planning, team coordination, and issue escalation to product teams.</li>
+              <li>Grew Telegram community from 2,000 to 30,000+ members organically through strategic AMAs, giveaways and engagement.</li>
+              <li>Reported progress directly to the Head of Communication about operations, people management and performance.</li>
+              <li>Edited and optimized content to improve clarity and accessibility for global audiences.</li>
+              <li>Supported shift planning and team coordination for moderators.</li>
+              <li>Escalated product issues and assisted Product/Development teams through structured reporting.</li>
             </ul>
           </div>
         </div>
 
+        <!-- HP -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Technical Support Engineer</div>
 
             <div class="job-meta">
-              <div class="meta-badge"><i class="fa-solid fa-building"></i> Hewlett Packard (via Magna Infotech)</div>
+              <div class="meta-badge"><i class="fa-solid fa-building"></i> Hewlett Packard Inc. (via Magna Infotech)</div>
               <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Jul 2016 – Jan 2018</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-              <div class="meta-badge"><i class="fa-solid fa-user"></i> On-site</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Full-time</div>
+              <div class="meta-badge"><i class="fa-solid fa-user"></i> Full-time</div>
             </div>
 
             <ul>
-              <li>Provided firmware/software support for laptops, desktops, and printers.</li>
-              <li>Promoted to <strong>Level 1.5</strong> for strong troubleshooting performance.</li>
-              <li>Built web-based troubleshooting guides improving resolution efficiency.</li>
+              <li>Delivered software and firmware support for laptops, desktops, and printers.</li>
+              <li>Promoted to Level 1.5 for outstanding troubleshooting and case validation performance.</li>
+              <li>Advanced to Commercial Printers Division within 9 months supporting high-end printer/scanner technologies.</li>
+              <li>Led a project to develop web-based troubleshooting guides, improving resolution efficiency.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Aegis -->
         <div class="job">
           <div class="job-content">
             <div class="job-title">Operational Executive</div>
@@ -1045,14 +1163,15 @@
               <div class="meta-badge"><i class="fa-solid fa-building"></i> Aegis</div>
               <div class="meta-badge"><i class="fa-solid fa-calendar"></i> Apr 2015 – Feb 2016</div>
               <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-              <div class="meta-badge"><i class="fa-solid fa-user"></i> On-site</div>
-              <div class="meta-badge"><i class="fa-solid fa-briefcase"></i> Full-time</div>
+              <div class="meta-badge"><i class="fa-solid fa-user"></i> Full-time</div>
             </div>
 
             <ul>
-              <li>Handled escalated support calls and OS troubleshooting.</li>
-              <li>Managed pan-India service center operations and vendor coordination.</li>
-              <li>Ensured complaints resolved within TAT using proactive follow-ups.</li>
+              <li>Delivered Level 1 semi-technical support and handled escalated calls ensuring quick resolution.</li>
+              <li>Performed OS installations and troubleshooting across Windows XP, 7, 8, 8.1 and 10.</li>
+              <li>Installed and configured printers while resolving hardware and connectivity issues.</li>
+              <li>Oversaw vendor coordination ensuring complaints were resolved within defined TAT.</li>
+              <li>Managed pan-India service center operations coordinating with clients and service centers via email.</li>
             </ul>
           </div>
         </div>
@@ -1068,8 +1187,8 @@
       </p>
 
       <div class="card">
-        <h3><i class="fa-solid fa-graduation-cap" style="color:var(--accent3);"></i> Bachelor of Engineering (Computer Software Engineering)</h3>
-        <p><i class="fa-solid fa-school" style="color:var(--accent);"></i> Rajeev Gandhi Prodhogiki College, India</p>
+        <h3><i class="fa-solid fa-graduation-cap"></i> Bachelor of Engineering (Computer Software Engineering)</h3>
+        <p><i class="fa-solid fa-school"></i> Rajeev Gandhi Prodhogiki College, India</p>
       </div>
     </section>
 
@@ -1080,34 +1199,17 @@
         Strong operational execution combined with Web3 ecosystem understanding and high volume support experience.
       </p>
 
-      <div class="card">
-        <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--accent);"></i> Core Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-chip"><i class="fa-solid fa-people-group"></i> Community Operations</div>
-          <div class="skill-chip"><i class="fa-solid fa-diagram-project"></i> SOP & Process Building</div>
-          <div class="skill-chip"><i class="fa-solid fa-user-shield"></i> Scam Prevention</div>
-          <div class="skill-chip"><i class="fa-solid fa-headset"></i> Exchange Support</div>
-          <div class="skill-chip"><i class="fa-solid fa-user-check"></i> KYC & Account Security</div>
-          <div class="skill-chip"><i class="fa-solid fa-wallet"></i> Wallet Troubleshooting</div>
-          <div class="skill-chip"><i class="fa-brands fa-discord"></i> Discord Management</div>
-          <div class="skill-chip"><i class="fa-brands fa-telegram"></i> Telegram Management</div>
-          <div class="skill-chip"><i class="fa-solid fa-chart-line"></i> Analytics & Reporting</div>
-          <div class="skill-chip"><i class="fa-solid fa-bullhorn"></i> Announcements & Campaigns</div>
-          <div class="skill-chip"><i class="fa-solid fa-users"></i> People Management</div>
-          <div class="skill-chip"><i class="fa-solid fa-globe"></i> Global Community Handling</div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:18px;">
-        <h3><i class="fa-solid fa-toolbox" style="color:var(--accent2);"></i> Tools</h3>
-        <div class="skills-grid">
-          <div class="skill-chip"><i class="fa-solid fa-note-sticky"></i> Notion</div>
-          <div class="skill-chip"><i class="fa-brands fa-google"></i> Google Sheets</div>
-          <div class="skill-chip"><i class="fa-solid fa-list-check"></i> Trello</div>
-          <div class="skill-chip"><i class="fa-brands fa-x-twitter"></i> Twitter/X</div>
-          <div class="skill-chip"><i class="fa-solid fa-chart-pie"></i> Sentiment Tracking</div>
-          <div class="skill-chip"><i class="fa-solid fa-robot"></i> Discord Bots</div>
-        </div>
+      <div class="skills">
+        <div class="skill"><i class="fa-solid fa-gears"></i> SOPs & Escalation Systems</div>
+        <div class="skill"><i class="fa-solid fa-people-group"></i> People Management</div>
+        <div class="skill"><i class="fa-brands fa-discord"></i> Discord Ops</div>
+        <div class="skill"><i class="fa-brands fa-telegram"></i> Telegram Growth</div>
+        <div class="skill"><i class="fa-solid fa-shield-halved"></i> Scam Prevention & Safety</div>
+        <div class="skill"><i class="fa-solid fa-chart-line"></i> Community Analytics</div>
+        <div class="skill"><i class="fa-solid fa-coins"></i> Exchange Support (KYC / Trading)</div>
+        <div class="skill"><i class="fa-solid fa-wallet"></i> Wallet / Transaction Support</div>
+        <div class="skill"><i class="fa-solid fa-bullhorn"></i> AMAs / Campaigns / Giveaways</div>
+        <div class="skill"><i class="fa-solid fa-list-check"></i> Notion / Trello / Sheets</div>
       </div>
     </section>
 
@@ -1118,13 +1220,10 @@
         Comfortable communicating with global communities across multiple languages.
       </p>
 
-      <div class="card">
-        <h3><i class="fa-solid fa-language" style="color:var(--accent3);"></i> Languages Spoken</h3>
-        <div class="skills-grid">
-          <div class="skill-chip"><i class="fa-solid fa-circle-check"></i> English</div>
-          <div class="skill-chip"><i class="fa-solid fa-circle-check"></i> Hindi</div>
-          <div class="skill-chip"><i class="fa-solid fa-circle-check"></i> Marathi</div>
-        </div>
+      <div class="skills">
+        <div class="skill"><i class="fa-solid fa-language"></i> English</div>
+        <div class="skill"><i class="fa-solid fa-language"></i> Hindi</div>
+        <div class="skill"><i class="fa-solid fa-language"></i> Marathi</div>
       </div>
     </section>
 
@@ -1132,96 +1231,63 @@
     <section id="casestudies" class="fade-up">
       <h2 class="section-title">Case Studies</h2>
       <p class="section-sub">
-        Real examples of how I improved operations, handled escalations, and built scalable community systems.
+        A deeper look into the real systems, workflows and operational improvements I contributed to.
       </p>
 
-      <!-- CASE 1 -->
-      <div class="card case-card">
-        <div class="case-content">
-          <div class="case-head">
-            <div class="case-title">OceanEX (Bitocean Global) — Exchange Support Operations</div>
+      <div class="card">
+        <h3>OceanEX (Bitocean Global) — Exchange Support Operations</h3>
 
-            <div class="case-tags">
-              <div class="case-tag"><i class="fa-solid fa-coins"></i> Crypto Exchange</div>
-              <div class="case-tag"><i class="fa-solid fa-headset"></i> Support Ops</div>
-              <div class="case-tag"><i class="fa-solid fa-shield-halved"></i> KYC + Security</div>
-              <div class="case-tag"><i class="fa-solid fa-network-wired"></i> Blockchain Transactions</div>
-            </div>
-          </div>
+        <div class="case-study">
+          <h4>Challenge</h4>
+          <p>
+            High-volume user support across trading, deposits/withdrawals, KYC, account security, and transaction disputes,
+            requiring fast escalation and accurate resolution while maintaining compliance.
+          </p>
 
-          <div class="case-section">
-            <h4><i class="fa-solid fa-triangle-exclamation"></i> Challenge</h4>
-            <p>
-              High-volume support requests across trading issues, KYC failures, deposits/withdrawals, account security,
-              and transaction disputes — requiring fast escalation and accurate resolution while maintaining compliance.
-            </p>
-          </div>
+          <h4>What I Did</h4>
+          <ul>
+            <li>Acted as the primary community & support bridge across Telegram, Discord, and official channels.</li>
+            <li>Built structured escalation flows for engineering, compliance, and operations teams.</li>
+            <li>Handled wallet confirmation issues, stuck transactions, and deposit/withdrawal verification cases.</li>
+            <li>Maintained professional and compliant messaging across multiple platforms.</li>
+          </ul>
 
-          <div class="case-section">
-            <h4><i class="fa-solid fa-gears"></i> Actions</h4>
-            <ul>
-              <li>Acted as primary bridge between community users and internal teams across Telegram, Discord, and official channels.</li>
-              <li>Handled wallet confirmation delays, stuck transactions, deposit/withdrawal discrepancies, and listing-related user issues.</li>
-              <li>Worked closely with engineering, operations, and compliance teams to resolve escalated cases.</li>
-              <li>Maintained clear and compliant messaging to prevent confusion and repeated tickets.</li>
-            </ul>
-          </div>
-
-          <div class="case-section">
-            <h4><i class="fa-solid fa-trophy"></i> Outcomes</h4>
-            <ul>
-              <li>Improved trust through faster issue ownership and structured escalation handling.</li>
-              <li>Supported new token listing launches with onboarding and post-listing community support.</li>
-              <li>Reduced repeated user confusion through clearer and more consistent support communication.</li>
-            </ul>
-          </div>
+          <h4>Outcome</h4>
+          <ul>
+            <li>Improved user trust through fast issue ownership and structured communication.</li>
+            <li>Supported token listing launches by assisting onboarding and post-launch user support.</li>
+            <li>Helped reduce confusion and repeated tickets by improving clarity of support responses.</li>
+          </ul>
         </div>
       </div>
 
-      <!-- CASE 2 -->
-      <div class="card case-card" style="margin-top:18px;">
-        <div class="case-content">
-          <div class="case-head">
-            <div class="case-title">Work X — Global Community Scaling & Team Operations</div>
+      <div class="card" style="margin-top:18px;">
+        <h3>Work X — Community Growth + Global Team Operations</h3>
 
-            <div class="case-tags">
-              <div class="case-tag"><i class="fa-solid fa-users"></i> 47K+ Telegram</div>
-              <div class="case-tag"><i class="fa-brands fa-discord"></i> 37K+ Discord</div>
-              <div class="case-tag"><i class="fa-solid fa-user-group"></i> 12+ Specialists</div>
-              <div class="case-tag"><i class="fa-solid fa-chart-line"></i> Engagement Strategy</div>
-            </div>
-          </div>
+        <div class="case-study">
+          <h4>Challenge</h4>
+          <p>
+            Managing a fast-growing Web3 community with multiple regions, large user base,
+            and frequent product updates requiring strong internal coordination.
+          </p>
 
-          <div class="case-section">
-            <h4><i class="fa-solid fa-triangle-exclamation"></i> Challenge</h4>
-            <p>
-              Managing a fast-growing Web3 community across multiple regions with a large user base,
-              frequent product updates, and high moderation workload requiring strong internal structure.
-            </p>
-          </div>
+          <h4>What I Did</h4>
+          <ul>
+            <li>Managed global & regional admins for Telegram (47K+) and Discord (37K+).</li>
+            <li>Led a team of 12+ community specialists with weekly planning and coverage scheduling.</li>
+            <li>Participated in weekly developer calls to align community updates with product direction.</li>
+            <li>Tracked sentiment, feedback, and reviews to support decision-making.</li>
+            <li>Created structured plans for announcements, promotions, and engagement activities.</li>
+          </ul>
 
-          <div class="case-section">
-            <h4><i class="fa-solid fa-gears"></i> Actions</h4>
-            <ul>
-              <li>Managed global and regional admins with structured coverage planning and scheduling.</li>
-              <li>Led a team of 12+ community specialists and created weekly execution plans.</li>
-              <li>Joined weekly developer calls to align community announcements with product updates.</li>
-              <li>Tracked sentiment, reviews, and feedback to support data-driven improvements.</li>
-              <li>Improved engagement through structured campaigns, promotions, and moderation consistency.</li>
-            </ul>
-          </div>
-
-          <div class="case-section">
-            <h4><i class="fa-solid fa-trophy"></i> Outcomes</h4>
-            <ul>
-              <li>Maintained stable operations across multiple regions and platforms.</li>
-              <li>Improved internal execution through documentation, planning, and escalation alignment.</li>
-              <li>Strengthened investor and community trust through transparency and consistency.</li>
-            </ul>
-          </div>
+          <h4>Outcome</h4>
+          <ul>
+            <li>Maintained consistent communication and moderation across global regions.</li>
+            <li>Improved team execution through planning, documentation, and workflow alignment.</li>
+            <li>Strengthened investor and community relationships through consistent engagement and transparency.</li>
+          </ul>
         </div>
       </div>
-
     </section>
 
     <!-- IMPACT -->
@@ -1233,30 +1299,30 @@
 
       <div class="grid">
         <div class="card">
-          <h3><i class="fa-solid fa-users" style="color:var(--accent);"></i> Large-Scale Community Management</h3>
+          <h3><i class="fa-solid fa-users"></i> Large-Scale Community Management</h3>
           <p>
-            Managed communities up to <strong>47K+ Telegram</strong> and <strong>37K+ Discord</strong> members with stable moderation.
+            Managed communities up to <strong>47K+ Telegram</strong> and <strong>37K+ Discord</strong> members with stable moderation and engagement.
           </p>
         </div>
 
         <div class="card">
-          <h3><i class="fa-solid fa-shield" style="color:var(--accent2);"></i> Exchange Support Expertise</h3>
+          <h3><i class="fa-solid fa-coins"></i> Exchange Support Expertise</h3>
           <p>
             Delivered high volume support for spot trading, KYC, deposits/withdrawals, listings and account security.
           </p>
         </div>
 
         <div class="card">
-          <h3><i class="fa-solid fa-people-group" style="color:var(--accent3);"></i> People Management</h3>
+          <h3><i class="fa-solid fa-people-group"></i> People Management at Scale</h3>
           <p>
-            Led teams of <strong>12+ specialists</strong>, improved scheduling, reporting, and coordination across global admins.
+            Led teams of <strong>12+ specialists</strong>, managed scheduling and improved coordination across global and regional admins.
           </p>
         </div>
 
         <div class="card">
-          <h3><i class="fa-solid fa-gears" style="color:var(--accent);"></i> Process Building & Systems Thinking</h3>
+          <h3><i class="fa-solid fa-gears"></i> Process Building & Systems Thinking</h3>
           <p>
-            Built SOPs, escalation workflows, engagement plans and reporting systems supporting long-term scalability.
+            Built SOPs, escalation workflows, engagement plans and reporting systems that supported long-term scalability.
           </p>
         </div>
       </div>
@@ -1272,19 +1338,25 @@
       <div class="grid">
         <div class="card">
           <h3>Direct Contact</h3>
-          <p><i class="fa-solid fa-envelope"></i> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></p>
-          <p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/SwatWeb3" target="_blank">t.me/SwatWeb3</a></p>
-          <p><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a></p>
+          <div class="contact-box">
+            <div><i class="fa-solid fa-envelope"></i> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></div>
+            <div><i class="fa-brands fa-telegram"></i> <a href="https://t.me/SwatWeb3" target="_blank">t.me/SwatWeb3</a></div>
+            <div><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a></div>
 
-          <a class="resume-btn" href="resume.pdf" target="_blank">
-            <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
-          </a>
+            <div style="margin-top:14px;">
+              <a class="resume-btn" href="resume.pdf" target="_blank">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="card">
           <h3>Professional Links</h3>
-          <p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" target="_blank">LinkedIn Profile</a></p>
-          <p><i class="fa-brands fa-github"></i> <a href="https://github.com/acidkidrock" target="_blank">github.com/acidkidrock</a></p>
+          <div class="contact-box">
+            <div><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" target="_blank">LinkedIn Profile</a></div>
+            <div><i class="fa-brands fa-github"></i> <a href="https://github.com/acidkidrock" target="_blank">github.com/acidkidrock</a></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1296,8 +1368,10 @@
   </div>
 
   <script>
+    // Auto update year
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Scroll Progress Bar
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1305,6 +1379,7 @@
       document.getElementById("progressBar").style.width = progress + "%";
     });
 
+    // Fade-up animations on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1315,6 +1390,7 @@
 
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 
+    // Active nav link highlight on scroll
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-item");
 
@@ -1336,6 +1412,7 @@
       });
     });
 
+    // Dark/Light Mode Toggle (saved in localStorage)
     const toggleBtn = document.getElementById("themeToggle");
 
     function setTheme(mode) {
@@ -1360,6 +1437,9 @@
       }
     });
 
+    /* ==========================
+       PARTICLES GENERATOR
+       ========================== */
     const particlesContainer = document.getElementById("particles");
     const particleCount = 35;
 
