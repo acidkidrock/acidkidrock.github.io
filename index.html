@@ -750,34 +750,122 @@
     }
 
     /* ==========================
-       CASE STUDIES
+       CASE STUDIES (FIXED PREMIUM)
        ========================== */
     .case-study {
+      margin-top: 18px;
+      padding-left: 18px;
       border-left: 4px solid var(--accent);
-      padding-left: 16px;
-      margin-top: 14px;
+      position: relative;
+    }
+
+    .case-study::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 22px rgba(0,224,255,0.18);
+      opacity: 0.95;
+    }
+
+    body.light .case-study::before {
+      box-shadow: 0 0 22px rgba(0,119,255,0.18);
     }
 
     .case-study h4 {
       font-size: 1.05rem;
       font-weight: 950;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .case-study h4::before {
+      content: "✦";
+      color: var(--accent3);
+      font-size: 0.9rem;
+      opacity: 0.9;
     }
 
     .case-study p {
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 10px;
+      font-size: 0.96rem;
+      margin-bottom: 14px;
+      line-height: 1.7;
     }
 
     .case-study ul {
       padding-left: 18px;
+      margin-bottom: 16px;
     }
 
     .case-study li {
-      margin-bottom: 8px;
+      margin-bottom: 9px;
       color: var(--muted);
       font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* Mini block inside case studies */
+    .case-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    body.light .case-block {
+      background: rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* ==========================
+       IMPACT HIGHLIGHTS (FIXED PREMIUM)
+       ========================== */
+    #impact .card {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    body.light #impact .card {
+      border: 1px solid rgba(0,0,0,0.10);
+      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+    }
+
+    #impact .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.10), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(122,92,255,0.10), transparent 55%);
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    body.light #impact .card::before {
+      background: radial-gradient(circle at top left, rgba(0,119,255,0.08), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(122,92,255,0.08), transparent 55%);
+    }
+
+    #impact .card h3,
+    #impact .card p {
+      position: relative;
+      z-index: 2;
+    }
+
+    #impact .card h3 i {
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(0,224,255,0.25);
+    }
+
+    body.light #impact .card h3 i {
+      text-shadow: 0 0 14px rgba(0,119,255,0.20);
     }
 
     /* ==========================
@@ -1238,26 +1326,34 @@
         <h3>OceanEX (Bitocean Global) — Exchange Support Operations</h3>
 
         <div class="case-study">
-          <h4>Challenge</h4>
-          <p>
-            High-volume user support across trading, deposits/withdrawals, KYC, account security, and transaction disputes,
-            requiring fast escalation and accurate resolution while maintaining compliance.
-          </p>
 
-          <h4>What I Did</h4>
-          <ul>
-            <li>Acted as the primary community & support bridge across Telegram, Discord, and official channels.</li>
-            <li>Built structured escalation flows for engineering, compliance, and operations teams.</li>
-            <li>Handled wallet confirmation issues, stuck transactions, and deposit/withdrawal verification cases.</li>
-            <li>Maintained professional and compliant messaging across multiple platforms.</li>
-          </ul>
+          <div class="case-block">
+            <h4>Challenge</h4>
+            <p>
+              High-volume user support across trading, deposits/withdrawals, KYC, account security, and transaction disputes,
+              requiring fast escalation and accurate resolution while maintaining compliance.
+            </p>
+          </div>
 
-          <h4>Outcome</h4>
-          <ul>
-            <li>Improved user trust through fast issue ownership and structured communication.</li>
-            <li>Supported token listing launches by assisting onboarding and post-launch user support.</li>
-            <li>Helped reduce confusion and repeated tickets by improving clarity of support responses.</li>
-          </ul>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Acted as the primary community & support bridge across Telegram, Discord, and official channels.</li>
+              <li>Built structured escalation flows for engineering, compliance, and operations teams.</li>
+              <li>Handled wallet confirmation issues, stuck transactions, and deposit/withdrawal verification cases.</li>
+              <li>Maintained professional and compliant messaging across multiple platforms.</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h4>Outcome</h4>
+            <ul>
+              <li>Improved user trust through fast issue ownership and structured communication.</li>
+              <li>Supported token listing launches by assisting onboarding and post-launch user support.</li>
+              <li>Helped reduce confusion and repeated tickets by improving clarity of support responses.</li>
+            </ul>
+          </div>
+
         </div>
       </div>
 
@@ -1265,27 +1361,35 @@
         <h3>Work X — Community Growth + Global Team Operations</h3>
 
         <div class="case-study">
-          <h4>Challenge</h4>
-          <p>
-            Managing a fast-growing Web3 community with multiple regions, large user base,
-            and frequent product updates requiring strong internal coordination.
-          </p>
 
-          <h4>What I Did</h4>
-          <ul>
-            <li>Managed global & regional admins for Telegram (47K+) and Discord (37K+).</li>
-            <li>Led a team of 12+ community specialists with weekly planning and coverage scheduling.</li>
-            <li>Participated in weekly developer calls to align community updates with product direction.</li>
-            <li>Tracked sentiment, feedback, and reviews to support decision-making.</li>
-            <li>Created structured plans for announcements, promotions, and engagement activities.</li>
-          </ul>
+          <div class="case-block">
+            <h4>Challenge</h4>
+            <p>
+              Managing a fast-growing Web3 community with multiple regions, large user base,
+              and frequent product updates requiring strong internal coordination.
+            </p>
+          </div>
 
-          <h4>Outcome</h4>
-          <ul>
-            <li>Maintained consistent communication and moderation across global regions.</li>
-            <li>Improved team execution through planning, documentation, and workflow alignment.</li>
-            <li>Strengthened investor and community relationships through consistent engagement and transparency.</li>
-          </ul>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Managed global & regional admins for Telegram (47K+) and Discord (37K+).</li>
+              <li>Led a team of 12+ community specialists with weekly planning and coverage scheduling.</li>
+              <li>Participated in weekly developer calls to align community updates with product direction.</li>
+              <li>Tracked sentiment, feedback, and reviews to support decision-making.</li>
+              <li>Created structured plans for announcements, promotions, and engagement activities.</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h4>Outcome</h4>
+            <ul>
+              <li>Maintained consistent communication and moderation across global regions.</li>
+              <li>Improved team execution through planning, documentation, and workflow alignment.</li>
+              <li>Strengthened investor and community relationships through consistent engagement and transparency.</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
