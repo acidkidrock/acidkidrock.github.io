@@ -1922,7 +1922,9 @@ body.light .menu-toggle:hover {
 
       particlesContainer.appendChild(p);
     }
+    
 // Mobile Hamburger Menu Toggle
+    
 const menuToggle = document.getElementById("menuToggle");
 const navLinksBox = document.getElementById("navLinks");
 
@@ -1930,9 +1932,9 @@ if (menuToggle && navLinksBox) {
   menuToggle.addEventListener("click", () => {
     navLinksBox.classList.toggle("show");
   });
-}
 
-  // Auto-close menu after clicking a link (mobile)
+  // Auto-close menu after clicking a link
+  
   document.querySelectorAll(".nav-item").forEach(link => {
     link.addEventListener("click", () => {
       navLinksBox.classList.remove("show");
