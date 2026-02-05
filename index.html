@@ -57,8 +57,9 @@
   align-items: center;
   justify-content: center;
 }
-
+    
 /* Hamburger Button */
+    
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -69,11 +70,8 @@
   padding: 8px 12px;
   font-weight: 900;
   font-size: 0.95rem;
-  align-items: center;
   gap: 10px;
   transition: 0.25s ease;
-}
-
 }
 
 .menu-toggle:hover {
@@ -109,13 +107,55 @@ body.light .menu-toggle:hover {
     z-index: 9999;
   }
 
+  body.light .nav-links {
+    background: rgba(246, 247, 251, 0.92);
+  }
+
   .nav-links.show {
     display: flex;
   }
 
-  /* ✅ ADD THIS */
+  /* Show hamburger */
   .menu-toggle {
     display: inline-flex;
+    align-items: center;
+  }
+}
+
+
+  .nav-container {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 18px;
+    right: 18px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(11, 13, 18, 0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+    z-index: 9999;
+  }
+
+  body.light .nav-links {
+    background: rgba(246, 247, 251, 0.92);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
   }
 }
 
@@ -263,40 +303,6 @@ body.light .menu-toggle:hover {
       width: 0%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       transition: width 0.1s linear;
-    }
-
-    /* ==========================
-       NAVBAR
-       ========================== */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(11, 13, 18, 0.72);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s ease;
-    }
-
-    body.light nav {
-      background: rgba(246, 247, 251, 0.78);
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 10px;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-    }
-
-    body.light .nav-links a.active,
-    body.light .nav-links a:hover {
-      background: rgba(0,0,0,0.05);
     }
 
  /* Toggle Button */
