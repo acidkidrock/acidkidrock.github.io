@@ -61,7 +61,7 @@
 /* Hamburger Button */
     
 .menu-toggle {
-  display: none; /* default hidden on desktop */
+  display: none; /* hidden on desktop */
   cursor: pointer;
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.04);
@@ -110,6 +110,13 @@ body.light .menu-toggle:hover {
   .nav-links.show {
     display: flex;
   }
+
+  .menu-toggle {
+    display: inline-flex; /* visible on mobile only */
+    align-items: center;
+  }
+}
+
 
   /* only show hamburger on mobile */
   .menu-toggle {
