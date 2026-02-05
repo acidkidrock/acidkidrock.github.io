@@ -267,7 +267,6 @@
       background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.01));
     }
 
-    /* Animated Border Glow */
     .hero-card::before {
       content: "";
       position: absolute;
@@ -324,7 +323,6 @@
       color: rgba(15, 23, 42, 0.75);
     }
 
-    /* Badge Row */
     .badge-row {
       display: flex;
       flex-wrap: wrap;
@@ -392,7 +390,6 @@
       box-shadow: 0 0 18px rgba(0,119,255,0.10);
     }
 
-    /* CTA Buttons */
     .cta-row {
       margin-top: 20px;
       display: flex;
@@ -434,7 +431,6 @@
       opacity: 0.95;
     }
 
-    /* Hero Side Cards */
     .hero-side {
       display: flex;
       flex-direction: column;
@@ -462,6 +458,7 @@
     .mini-card p {
       color: var(--muted);
       font-size: 0.95rem;
+      line-height: 1.7;
     }
 
     .socials {
@@ -509,7 +506,7 @@
     }
 
     /* ==========================
-       QUICK CONTACT STRIP (HERO)
+       QUICK CONTACT STRIP
        ========================== */
     .quick-contact {
       margin-top: 14px;
@@ -559,7 +556,7 @@
        SECTION STYLING
        ========================== */
     section {
-      margin-top: 75px;
+      margin-top: 85px;
       scroll-margin-top: 90px;
     }
 
@@ -575,12 +572,13 @@
       margin-bottom: 22px;
       max-width: 900px;
       font-size: 1.02rem;
+      line-height: 1.8;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 22px;
     }
 
     .card {
@@ -609,7 +607,7 @@
 
     .card h3 {
       font-size: 1.08rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 950;
       letter-spacing: -0.2px;
     }
@@ -617,6 +615,7 @@
     .card p {
       color: var(--muted);
       font-size: 0.96rem;
+      line-height: 1.75;
     }
 
     /* ==========================
@@ -625,7 +624,7 @@
     .experience {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 22px;
     }
 
     .job {
@@ -669,7 +668,6 @@
       letter-spacing: -0.3px;
     }
 
-    /* Meta Row Fix */
     .job-meta {
       display: flex;
       flex-wrap: wrap;
@@ -701,15 +699,17 @@
 
     .job ul {
       padding-left: 18px;
+      margin-top: 10px;
     }
 
     .job li {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      line-height: 1.75;
       color: var(--muted);
       font-size: 0.96rem;
     }
 
-    /* Promotion Timeline (Work X) */
+    /* Promotion Timeline */
     .timeline {
       margin-top: 14px;
       padding-left: 12px;
@@ -754,7 +754,7 @@
     }
 
     /* ==========================
-       SKILLS & LANGUAGES CHIP GRID
+       SKILLS & LANGUAGES
        ========================== */
     .skills {
       display: flex;
@@ -797,7 +797,7 @@
     }
 
     /* ==========================
-       CASE STUDIES (FIXED PREMIUM)
+       CASE STUDIES
        ========================== */
     .case-study {
       margin-top: 18px;
@@ -849,16 +849,16 @@
     .case-study ul {
       padding-left: 18px;
       margin-bottom: 16px;
+      margin-top: 10px;
     }
 
     .case-study li {
-      margin-bottom: 9px;
+      margin-bottom: 12px;
       color: var(--muted);
       font-size: 0.95rem;
-      line-height: 1.65;
+      line-height: 1.75;
     }
 
-    /* Mini block inside case studies */
     .case-block {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
@@ -873,11 +873,12 @@
     }
 
     /* ==========================
-       IMPACT HIGHLIGHTS (FIXED PREMIUM)
+       IMPACT HIGHLIGHTS
        ========================== */
     #impact .card {
       border: 1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding: 26px;
     }
 
     body.light #impact .card {
@@ -929,7 +930,6 @@
       font-weight: 950;
     }
 
-    /* Resume Button */
     .resume-btn {
       margin-top: 16px;
       display: inline-flex;
@@ -1029,7 +1029,6 @@
         <a href="#impact" class="nav-item">Impact</a>
         <a href="#contact" class="nav-item">Contact</a>
 
-        <!-- THEME TOGGLE -->
         <button class="theme-toggle" id="themeToggle">
           <i class="fa-solid fa-moon"></i> Theme
         </button>
@@ -1056,7 +1055,6 @@
             leading teams and building scalable systems across Discord & Telegram.
           </p>
 
-          <!-- QUICK CONTACT STRIP -->
           <div class="quick-contact">
             <div><span>Email:</span> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></div>
             <div><span>X:</span> <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a></div>
@@ -1387,7 +1385,6 @@
         <h3>OceanEX (Bitocean Global) — Exchange Support Operations</h3>
 
         <div class="case-study">
-
           <div class="case-block">
             <h4>Challenge</h4>
             <p>
@@ -1414,7 +1411,6 @@
               <li>Helped reduce confusion and repeated tickets by improving clarity of support responses.</li>
             </ul>
           </div>
-
         </div>
       </div>
 
@@ -1422,7 +1418,6 @@
         <h3>Work X — Community Growth + Global Team Operations</h3>
 
         <div class="case-study">
-
           <div class="case-block">
             <h4>Challenge</h4>
             <p>
@@ -1450,7 +1445,6 @@
               <li>Strengthened investor and community relationships through consistent engagement and transparency.</li>
             </ul>
           </div>
-
         </div>
       </div>
     </section>
@@ -1536,10 +1530,8 @@
   </div>
 
   <script>
-    // Auto update year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Scroll Progress Bar
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1547,7 +1539,6 @@
       document.getElementById("progressBar").style.width = progress + "%";
     });
 
-    // Fade-up animations on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1558,7 +1549,6 @@
 
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 
-    // Active nav link highlight on scroll
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-item");
 
@@ -1580,7 +1570,6 @@
       });
     });
 
-    // Dark/Light Mode Toggle (saved in localStorage)
     const toggleBtn = document.getElementById("themeToggle");
 
     function setTheme(mode) {
@@ -1605,9 +1594,6 @@
       }
     });
 
-    /* ==========================
-       PARTICLES GENERATOR
-       ========================== */
     const particlesContainer = document.getElementById("particles");
     const particleCount = 35;
 
