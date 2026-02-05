@@ -40,8 +40,8 @@ body.light nav {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  position: relative;
 }
+
 
 .logo {
   user-select: none;
@@ -88,6 +88,13 @@ body.light .nav-links a.active,
 body.light .nav-links a:hover {
   background: rgba(0,0,0,0.06);
 }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 
 /* Theme Button */
 .theme-toggle {
@@ -1280,21 +1287,29 @@ body.light .menu-toggle:hover {
       <a href="#impact" class="nav-item">Impact</a>
       <a href="#contact" class="nav-item">Contact</a>
     </div>
+    
+<div class="nav-actions">
+  
+  <!-- HAMBURGER (MOBILE ONLY) -->
+  
+  <button class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 
-    <!-- RIGHT: HAMBURGER (MOBILE ONLY) -->
-    <button class="menu-toggle" id="menuToggle">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+  <!-- THEME BUTTON -->
+  
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fa-solid fa-moon"></i> Theme
+  </button>
 
-    <!-- RIGHT: THEME BUTTON -->
-    <button class="theme-toggle" id="themeToggle">
-      <i class="fa-solid fa-moon"></i> Theme
-    </button>
+</div>  <!-- closes nav-actions -->
 
-  </div>
+</div>  <!-- closes nav-container -->
+
 </nav>
 
-  <div class="container">
+<div class="container">
+
 
     <!-- HERO -->
     <div class="hero fade-up show">
