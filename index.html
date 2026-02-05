@@ -63,14 +63,13 @@ body.light nav {
 
 /* Hide nav links on desktop (only hamburger will open them) */
 .nav-links {
-  display: none;
+  display: flex;
   gap: 14px;
   font-size: 0.95rem;
   font-weight: 850;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: column;   /* IMPORTANT */
 }
 
 .nav-links a {
@@ -245,12 +244,13 @@ body.light .menu-toggle:hover {
     grid-template-columns: 1fr auto auto;
   }
 
+ 
   .nav-links {
     position: absolute;
     top: 72px;
     left: 18px;
     right: 18px;
-    display: none;
+    display: none;   /* IMPORTANT */
     flex-direction: column;
     gap: 12px;
     padding: 16px;
@@ -261,7 +261,7 @@ body.light .menu-toggle:hover {
     box-shadow: var(--shadow);
     z-index: 9999;
   }
-
+  
   body.light .nav-links {
     background: rgba(246, 247, 251, 0.92);
   }
