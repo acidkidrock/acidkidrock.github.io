@@ -70,6 +70,7 @@ body.light nav {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: column;   /* IMPORTANT */
 }
 
 .nav-links a {
@@ -1929,6 +1930,7 @@ if (menuToggle && navLinksBox) {
   menuToggle.addEventListener("click", () => {
     navLinksBox.classList.toggle("show");
   });
+}
 
   // Auto-close menu after clicking a link (mobile)
   document.querySelectorAll(".nav-item").forEach(link => {
