@@ -87,6 +87,7 @@ body.light .nav-links a:hover {
   padding: 8px 12px;
   font-weight: 900;
   font-size: 0.95rem;
+  display: flex;
   align-items: center;
   gap: 10px;
   transition: 0.25s ease;
@@ -287,40 +288,6 @@ body.light .menu-toggle:hover {
       background: rgba(246, 247, 251, 0.78);
     }
 
-    .nav-container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .logo {
-      font-size: 1.05rem;
-      font-weight: 900;
-      letter-spacing: 0.6px;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 12px;
-      font-size: 0.95rem;
-      font-weight: 800;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
     .nav-links a {
       color: var(--muted);
       padding: 8px 10px;
@@ -338,21 +305,22 @@ body.light .menu-toggle:hover {
       background: rgba(0,0,0,0.05);
     }
 
-    /* Toggle Button */
-    .theme-toggle {
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 12px;
-      font-weight: 900;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.25s ease;
-    }
+ /* Toggle Button */
+.theme-toggle {
+  justify-self: end;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+}
 
     .theme-toggle:hover {
       transform: translateY(-1px);
