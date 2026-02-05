@@ -59,7 +59,6 @@
 }
     
 /* Hamburger Button */
-    
 .menu-toggle {
   display: none; /* hidden on desktop */
   cursor: pointer;
@@ -83,8 +82,13 @@ body.light .menu-toggle:hover {
   border-color: rgba(0,119,255,0.35);
 }
 
-/* MOBILE NAV */
+/* MOBILE: show hamburger */
 @media (max-width: 900px) {
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+}
 
   .nav-container {
     grid-template-columns: 1fr auto auto;
