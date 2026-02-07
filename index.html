@@ -2344,13 +2344,6 @@ window.addEventListener("scroll", () => {
     });
   }
 
-  // Fallback: show everything after 1.5 seconds if observer didn't fire
-  setTimeout(() => {
-    if (document.querySelectorAll(".fade-up:not(.show)").length > 0) {
-      document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("show"));
-    }
-  }, 1500);
-
 
    // Scroll to Top Button (safe load)
 window.addEventListener("load", () => {
