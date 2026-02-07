@@ -478,8 +478,8 @@ body.light .hero-card::before {
 }
 
 .badge-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
   margin-top: 14px;
 }
@@ -751,7 +751,7 @@ section {
 .section-sub {
   color: var(--muted);
   margin-bottom: 22px;
-  max-width: 900px;
+  max-width: 1100px;
   font-size: 1.02rem;
   line-height: 1.8;
 }
@@ -1432,7 +1432,7 @@ body.light footer {
               <div class="badge"><i class="fa-brands fa-discord"></i> 37K+ Discord</div>
           </div>
 
-        <div class="badge-row" style="margin-top:12px;">
+       <div class="badge-row">
              <div class="badge"><i class="fa-solid fa-people-group"></i> Led 12+ Team Members</div>
              <div class="badge"><i class="fa-solid fa-globe"></i> Remote + Onsite</div>
              <div class="badge"><i class="fa-solid fa-shield-halved"></i> Web3 Operations</div>
