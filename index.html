@@ -986,6 +986,8 @@ body.light .case-block {
   border: 1px solid rgba(0,0,0,0.08);
 }
 
+  
+
 /* ==========================
    IMPACT HIGHLIGHTS
    ========================== */
@@ -1071,6 +1073,53 @@ body.light .resume-btn {
   border-color: rgba(0,224,255,0.45);
 }
 
+  /* ==========================
+   SCROLL TO TOP BUTTON
+   ========================== */
+.scroll-top {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 999;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 950;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.25s ease;
+}
+
+.scroll-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,224,255,0.35);
+  background: rgba(0,224,255,0.08);
+}
+
+body.light .scroll-top:hover {
+  border-color: rgba(0,119,255,0.35);
+  background: rgba(0,119,255,0.08);
+}
+
+  
 /* ==========================
    FOOTER
    ========================== */
@@ -1346,24 +1395,28 @@ body.light .sticky-contact:hover {
             <div class="chip">Community Analytics</div>
           </div>
 
-         <div class="cta-row">
+          
+<div class="cta-row">
   <a href="#contact" class="btn primary">
     <i class="fa-solid fa-paper-plane"></i> Contact Me
+  </a>
+
+  <a href="mailto:swatweb3@gmail.com" class="btn">
+    <i class="fa-solid fa-envelope"></i> Email Me
   </a>
 
   <a href="#experience" class="btn">
     <i class="fa-solid fa-briefcase"></i> View Experience
   </a>
 
-  <a href="resume.pdf" class="btn" target="_blank">
+  <a href="resume.pdf" class="btn" target="_blank" rel="noopener noreferrer" download>
     <i class="fa-solid fa-file-arrow-down"></i> Download Resume
   </a>
 
-  <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" class="btn" target="_blank">
+  <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" class="btn" target="_blank" rel="noopener noreferrer">
     <i class="fa-brands fa-linkedin"></i> LinkedIn
   </a>
 </div>
-
 
 
         </div>
@@ -1798,6 +1851,52 @@ body.light .sticky-contact:hover {
 
 </section>
 
+            <!-- IMPACT -->
+<section id="impact" class="fade-up">
+  <h2 class="section-title">Impact Highlights</h2>
+  <p class="section-sub">
+    Key areas where I consistently deliver results and operational stability across Web3 ecosystems.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3><i class="fa-solid fa-users"></i> Large-Scale Community Management</h3>
+      <p>
+        Managed and scaled large communities across Telegram and Discord, supporting up to
+        <strong>47K+ Telegram</strong> and <strong>37K+ Discord</strong> members with consistent moderation,
+        engagement, and community safety.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-coins"></i> Exchange Support Expertise</h3>
+      <p>
+        Delivered structured support across spot trading, KYC, deposits/withdrawals, listings,
+        and account security while coordinating escalations with operations and compliance teams.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-people-group"></i> People Management at Scale</h3>
+      <p>
+        Led and managed <strong>12+ community specialists</strong>, improved shift coverage planning,
+        and ensured smooth coordination across global admins and regional community channels.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-gears"></i> Process Building & Systems Thinking</h3>
+      <p>
+        Built SOPs, escalation frameworks, reporting systems, and moderation workflows that improved operational
+        efficiency and strengthened long-term community trust.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
           <!-- TESTIMONIALS -->
 <section id="testimonials" class="fade-up">
   <h2 class="section-title">Testimonials</h2>
@@ -1911,159 +2010,191 @@ body.light .sticky-contact:hover {
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.body.style.transition = "background 0.3s ease, color 0.3s ease";
+  <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.body.style.transition = "background 0.3s ease, color 0.3s ease";
 
-
-    window.addEventListener("scroll", () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
-      document.getElementById("progressBar").style.width = progress + "%";
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.01, rootMargin: "0px 0px -50px 0px" });
-
-
-    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
-
-    // Backup: Force show all sections on mobile if observer fails
-if (window.innerWidth <= 768) {
-  setTimeout(() => {
-    document.querySelectorAll(".fade-up").forEach(el => el.classList.add("show"));
-  }, 500);
-}
-
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-item");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 130;
-        if (scrollY >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
-    });
-
-    const toggleBtn = document.getElementById("themeToggle");
-
-    function setTheme(mode) {
-      if (mode === "light") {
-        document.body.classList.add("light");
-        toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Theme';
-      } else {
-        document.body.classList.remove("light");
-        toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Theme';
-      }
-      localStorage.setItem("theme", mode);
-    }
-
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-
-    toggleBtn.addEventListener("click", () => {
-      if (document.body.classList.contains("light")) {
-        setTheme("dark");
-      } else {
-        setTheme("light");
-      }
-    });
-
-    const particlesContainer = document.getElementById("particles");
-    const particleCount = window.innerWidth <= 768 ? 10 : 35;
-
-
-    for (let i = 0; i < particleCount; i++) {
-      const p = document.createElement("div");
-      p.classList.add("particle");
-
-      const size = Math.random() * 4 + 2;
-      p.style.width = size + "px";
-      p.style.height = size + "px";
-
-      p.style.left = Math.random() * 100 + "vw";
-      p.style.top = Math.random() * 100 + "vh";
-
-      const duration = Math.random() * 25 + 15;
-      p.style.animationDuration = duration + "s";
-
-      const delay = Math.random() * 15;
-      p.style.animationDelay = delay + "s";
-
-      particlesContainer.appendChild(p);
-    }
-    
-// Mobile Hamburger Menu Toggle
-const menuToggle = document.getElementById("menuToggle");
-const navLinksBox = document.getElementById("navLinks");
-
-if (menuToggle && navLinksBox) {
-
-  // Toggle menu open/close
-  menuToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevents outside click closing instantly
-    navLinksBox.classList.toggle("show");
-  });
-
-  // Close menu after clicking a link + smooth scroll
-  document.querySelectorAll(".nav-item").forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      // Close menu
-      navLinksBox.classList.remove("show");
-
-      // Smooth scroll
-      const targetId = link.getAttribute("href");
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        setTimeout(() => {
-          targetSection.scrollIntoView({ behavior: "smooth" });
-        }, 200);
-      }
-    });
-  });
-
-  // Close menu when user scrolls
+  // Progress bar
   window.addEventListener("scroll", () => {
-    navLinksBox.classList.remove("show");
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight =
+      document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById("progressBar").style.width = progress + "%";
   });
 
-  // Close menu if user clicks outside navbar
-  document.addEventListener("click", (e) => {
-    if (!navLinksBox.contains(e.target) && !menuToggle.contains(e.target)) {
-      navLinksBox.classList.remove("show");
+  // Fade-up animation observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.01, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+
+  // Backup: Force show all sections on mobile if observer fails
+  if (window.innerWidth <= 768) {
+    setTimeout(() => {
+      document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("show"));
+    }, 500);
+  }
+
+  // Navbar active section highlight
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-item");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 130;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+
+  // Theme Toggle
+  const toggleBtn = document.getElementById("themeToggle");
+
+  function setTheme(mode) {
+    if (mode === "light") {
+      document.body.classList.add("light");
+      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Theme';
+    } else {
+      document.body.classList.remove("light");
+      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Theme';
+    }
+    localStorage.setItem("theme", mode);
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  setTheme(savedTheme);
+
+  toggleBtn.addEventListener("click", () => {
+    if (document.body.classList.contains("light")) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
   });
+
+  // Particles
+  const particlesContainer = document.getElementById("particles");
+  const particleCount = window.innerWidth <= 768 ? 10 : 35;
+
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement("div");
+    p.classList.add("particle");
+
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.top = Math.random() * 100 + "vh";
+
+    const duration = Math.random() * 25 + 15;
+    p.style.animationDuration = duration + "s";
+
+    const delay = Math.random() * 15;
+    p.style.animationDelay = delay + "s";
+
+    particlesContainer.appendChild(p);
+  }
+
+  // Mobile Hamburger Menu Toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinksBox = document.getElementById("navLinks");
+
+  if (menuToggle && navLinksBox) {
+    // Toggle menu open/close
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navLinksBox.classList.toggle("show");
+    });
+
+    // Close menu after clicking a link + smooth scroll
+    document.querySelectorAll(".nav-item").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        navLinksBox.classList.remove("show");
+
+        const targetId = link.getAttribute("href");
+        const targetSection = document.querySelector(targetId);
+
+        if (targetSection) {
+          setTimeout(() => {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }, 200);
+        }
+      });
+    });
+
+    // Close menu when user scrolls
+    window.addEventListener("scroll", () => {
+      navLinksBox.classList.remove("show");
+    });
+
+    // Close menu if user clicks outside navbar
+    document.addEventListener("click", (e) => {
+      if (!navLinksBox.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinksBox.classList.remove("show");
+      }
+    });
+  }
 
   // Fallback: show everything after 1.5 seconds if observer didn't fire
-setTimeout(() => {
-  if (document.querySelectorAll('.fade-up:not(.show)').length > 0) {
-    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('show'));
+  setTimeout(() => {
+    if (document.querySelectorAll(".fade-up:not(.show)").length > 0) {
+      document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("show"));
+    }
+  }, 1500);
+
+  // ==========================
+  // Step 3C: Scroll-to-top Button
+  // ==========================
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 500) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+
+    // Scroll to Top Button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
   }
-}, 1500);
-
-
-}
+});
 
 
 </script>
+
+<a href="#top" class="scroll-top" id="scrollTopBtn">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 </body>
 </html>
