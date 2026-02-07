@@ -10,12 +10,13 @@
   <meta property="og:description" content="Community Ops specialist experienced in Web3 support, Discord/Telegram moderation, escalation workflows, SOP building, and team coordination." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://acidkidrock.github.io/" />
-  <meta property="og:image" content="https://acidkidrock.github.io/preview.png" />
+  <meta property="og:image" content="https://acidkidrock.github.io/preview.png?v=2" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Swatantra Dwivedi | Community Operations Manager" />
   <meta name="twitter:description" content="Community Ops specialist experienced in Web3 support, Discord/Telegram moderation, escalation workflows, SOP building, and team coordination." />
-  <meta name="twitter:image" content="https://acidkidrock.github.io/preview.png" />
+  <meta name="twitter:image" content="https://acidkidrock.github.io/preview.png?v=2" />
+
 
   <!-- Schema Markup (SEO) -->
   <script type="application/ld+json">
@@ -255,6 +256,37 @@ body.light .nav-links a:hover {
   align-items: center;
   gap: 12px;
 }
+
+.nav-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(90deg, rgba(0,224,255,0.16), rgba(122,92,255,0.14));
+  color: var(--text);
+  transition: 0.25s ease;
+}
+
+body.light .nav-resume {
+  border: 1px solid rgba(0,0,0,0.10);
+  background: linear-gradient(90deg, rgba(0,119,255,0.14), rgba(122,92,255,0.12));
+  color: var(--text);
+}
+
+.nav-resume:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+  border-color: rgba(0,224,255,0.35);
+}
+
+body.light .nav-resume:hover {
+  border-color: rgba(0,119,255,0.35);
+}
+
 
 /* Theme Button */
 .theme-toggle {
@@ -658,23 +690,35 @@ body.light .quick-contact {
   font-weight: 950;
 }
 
-.quick-contact span {
-  color: var(--muted);
-}
-
-body.light .quick-contact span {
-  color: rgba(15, 23, 42, 0.55);
-}
-
-/* Highlight metrics */
-.metric {
-  font-weight: 950;
+.copy-btn {
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
   color: var(--text);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  transition: 0.25s ease;
 }
 
-.metric strong {
-  color: var(--accent3);
+body.light .copy-btn {
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.03);
+  color: rgba(15, 23, 42, 0.85);
 }
+
+.copy-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,224,255,0.35);
+  background: rgba(0,224,255,0.08);
+}
+
+body.light .copy-btn:hover {
+  border-color: rgba(0,119,255,0.35);
+  background: rgba(0,119,255,0.08);
+}
+
 
 /* ==========================
    SECTION STYLING
@@ -1339,13 +1383,16 @@ body.light footer {
 <div class="nav-actions">
   
   <!-- HAMBURGER (MOBILE ONLY) -->
-  
   <button class="menu-toggle" id="menuToggle">
     <i class="fa-solid fa-bars"></i>
   </button>
 
+  <!-- RESUME BUTTON -->
+  <a href="resume.pdf" class="nav-resume" target="_blank" rel="noopener noreferrer">
+    <i class="fa-solid fa-file-arrow-down"></i> Resume
+  </a>
+
   <!-- THEME BUTTON -->
-  
   <button class="theme-toggle" id="themeToggle">
     <i class="fa-solid fa-moon"></i> Theme
   </button>
@@ -1386,23 +1433,38 @@ body.light footer {
 
 
 
-         <div class="quick-contact">
-  <div><span>Email:</span> <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a></div>
+        <div class="quick-contact">
 
-  <div><span>X:</span> 
-    <a href="https://x.com/SwatWeb3" target="_blank" rel="noopener noreferrer">@SwatWeb3</a>
+  <div>
+    <span>Email:</span>
+    <a href="mailto:swatweb3@gmail.com">swatweb3@gmail.com</a>
+    <button class="copy-btn" onclick="copyText('swatweb3@gmail.com')">Copy</button>
   </div>
 
-  <div><span>Telegram:</span> 
-    <a href="https://t.me/SwatWeb3" target="_blank" rel="noopener noreferrer">@SwatWeb3</a>
+  <div>
+    <span>X:</span>
+    <a href="https://x.com/SwatWeb3" target="_blank">@SwatWeb3</a>
   </div>
 
-  <div><span>LinkedIn:</span> 
-    <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" target="_blank" rel="noopener noreferrer">
+  <div>
+    <span>Telegram:</span>
+    <a href="https://t.me/SwatWeb3" target="_blank">@SwatWeb3</a>
+    <button class="copy-btn" onclick="copyText('@SwatWeb3')">Copy</button>
+  </div>
+
+  <div>
+    <span>LinkedIn:</span>
+    <a href="https://www.linkedin.com/in/swatantra-dwivedi-bb6a41246/" target="_blank">
       linkedin.com/in/swatantra-dwivedi
     </a>
   </div>
+
+  <!-- ✅ Toast should be here -->
+  <span id="copyToast" class="copy-toast">Copied!</span>
+
 </div>
+
+
 
 
           <p class="tagline">
@@ -2203,14 +2265,22 @@ body.light footer {
   document.getElementById("year").textContent = new Date().getFullYear();
   document.body.style.transition = "background 0.3s ease, color 0.3s ease";
 
-  // Progress bar
-  window.addEventListener("scroll", () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight =
-      document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-    document.getElementById("progressBar").style.width = progress + "%";
+ // Copy button function
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Copied: " + text);
   });
+}
+
+// Progress bar
+window.addEventListener("scroll", () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight =
+    document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById("progressBar").style.width = progress + "%";
+});
+
 
   // Fade-up animation observer
   const observer = new IntersectionObserver(
