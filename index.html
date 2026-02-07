@@ -1512,10 +1512,11 @@ body.light .sticky-contact:hover {
     <h3><i class="fa-solid fa-star"></i> Featured Experience</h3>
     <ul style="padding-left:18px; margin-top:10px;">
       <li style="margin-bottom:12px; color: var(--muted); line-height:1.75;">
-         Managed <span class="metric"><strong>3 Telegram groups</strong></span> at Starbot, including Premium traders
-         (<span class="metric"><strong>150–200</strong></span>) and Main community
-         (<span class="metric"><strong>4,000–5,000</strong></span>).
-      </li>
+        Managed <span class="metric"><strong>3 Telegram groups</strong></span> at Starbot, including Premium traders
+       (<span class="metric"><strong>150–200</strong></span>) and Main community
+       (<span class="metric"><strong>4,000–5,000</strong></span>), while handling onboarding and real-time developer escalations.
+   </li>
+
 
       <li style="margin-bottom:12px; color: var(--muted); line-height:1.75;">
         Led large-scale community operations across <span class="metric"><strong>Telegram (47K+)</strong></span> and
@@ -2278,15 +2279,18 @@ body.light .sticky-contact:hover {
 
 
     // Scroll to Top Button
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-
 window.addEventListener("scroll", () => {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  if (!scrollTopBtn) return;
+
   if (window.scrollY > 400) {
     scrollTopBtn.classList.add("show");
   } else {
     scrollTopBtn.classList.remove("show");
   }
 });
+
 
 
 </script>
