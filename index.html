@@ -2154,12 +2154,17 @@ body.light .sticky-contact:hover {
 
   document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
 
-  // Backup: Force show all sections on mobile if observer fails
-  if (window.innerWidth <= 768) {
-    setTimeout(() => {
-      document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("show"));
-    }, 500);
-  }
+ // Backup: Force show all sections on mobile if observer fails
+if (window.innerWidth <= 768) {
+  setTimeout(() => {
+    document.querySelectorAll(".fade-up").forEach((el) => {
+      el.classList.add("show");
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    });
+  }, 400);
+}
+
 
   // Navbar active section highlight
   const sections = document.querySelectorAll("section");
@@ -2261,10 +2266,13 @@ body.light .sticky-contact:hover {
       });
     });
 
-    // Close menu when user scrolls
-    window.addEventListener("scroll", () => {
-      navLinksBox.classList.remove("show");
-    });
+  // Close menu when user scrolls (mobile only)
+window.addEventListener("scroll", () => {
+  if (window.innerWidth <= 900) {
+    navLinksBox.classList.remove("show");
+  }
+});
+
 
     // Close menu if user clicks outside navbar
     document.addEventListener("click", (e) => {
@@ -2282,18 +2290,21 @@ body.light .sticky-contact:hover {
   }, 1500);
 
 
-    // Scroll to Top Button
-window.addEventListener("scroll", () => {
+   // Scroll to Top Button (safe load)
+window.addEventListener("load", () => {
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
   if (!scrollTopBtn) return;
 
-  if (window.scrollY > 400) {
-    scrollTopBtn.classList.add("show");
-  } else {
-    scrollTopBtn.classList.remove("show");
-  }
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
 });
+
 
 
 
