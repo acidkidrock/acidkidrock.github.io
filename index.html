@@ -702,6 +702,20 @@ body.light .quick-contact {
   transition: 0.25s ease;
 }
 
+.copy-toast {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: 0.25s ease;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--accent3);
+}
+
+.copy-toast.show {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
 body.light .copy-btn {
   border: 1px solid rgba(0,0,0,0.10);
   background: rgba(0,0,0,0.03);
@@ -718,7 +732,6 @@ body.light .copy-btn:hover {
   border-color: rgba(0,119,255,0.35);
   background: rgba(0,119,255,0.08);
 }
-
 
 /* ==========================
    SECTION STYLING
@@ -2268,9 +2281,17 @@ body.light footer {
  // Copy button function
 function copyText(text) {
   navigator.clipboard.writeText(text).then(() => {
-    alert("Copied: " + text);
+    const toast = document.getElementById("copyToast");
+    if (!toast) return;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 1200);
   });
 }
+
 
 // Progress bar
 window.addEventListener("scroll", () => {
