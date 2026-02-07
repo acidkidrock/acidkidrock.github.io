@@ -479,12 +479,19 @@ body.light .hero-card::before {
 
 .badge-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 14px;
 }
 
+@media (min-width: 901px) {
+  .badge-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .badge {
+  width: 100%;
   display: inline-flex;
   align-items: center;
   gap: 8px;
