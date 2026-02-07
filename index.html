@@ -2345,12 +2345,10 @@ window.addEventListener("scroll", () => {
   }
 
 
-   // Scroll to Top Button (safe load)
-window.addEventListener("load", () => {
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  // Scroll to Top Button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-  if (!scrollTopBtn) return;
-
+if (scrollTopBtn) {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 400) {
       scrollTopBtn.classList.add("show");
@@ -2358,9 +2356,7 @@ window.addEventListener("load", () => {
       scrollTopBtn.classList.remove("show");
     }
   });
-});
-
-
+}
 
 
 </script>
